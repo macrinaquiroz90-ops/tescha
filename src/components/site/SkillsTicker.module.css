@@ -1,0 +1,39 @@
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: ticker 38s linear infinite;
+  padding: 0.4rem 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(47, 244, 216, 0.16);
+  border-radius: 999px;
+  background: rgba(47, 244, 216, 0.055);
+  color: #c5f7f0;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.pill:hover {
+  border-color: rgba(47, 244, 216, 0.42);
+  background: rgba(47, 244, 216, 0.12);
+}

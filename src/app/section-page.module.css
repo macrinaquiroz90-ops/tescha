@@ -1,0 +1,228 @@
+.page {
+  width: min(1200px, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 5rem;
+}
+
+.section {
+  padding: 2rem 0;
+}
+
+.metrics,
+.stageGrid,
+.resourceGrid,
+.specialtyGrid,
+.featureGrid,
+.contactGrid,
+.pathGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stageGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resourceGrid,
+.specialtyGrid,
+.pathGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.featureGrid,
+.contactGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metricCard,
+.stageCard,
+.resourceCard,
+.specialtyCard,
+.featureCard,
+.contactCard,
+.pathCard,
+.banner {
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 28%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.metricCard,
+.stageCard,
+.resourceCard,
+.specialtyCard,
+.featureCard,
+.contactCard,
+.pathCard {
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+}
+
+.metricValue,
+.cardLabel,
+.tag {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.metricValue {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 2.3rem;
+  letter-spacing: -0.05em;
+}
+
+.metricCard h3,
+.stageCard h3,
+.resourceCard h3,
+.specialtyCard h3,
+.featureCard h3,
+.contactCard h3,
+.pathCard h3,
+.banner h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.28rem;
+}
+
+.metricCard p,
+.stageCard p,
+.resourceCard p,
+.specialtyCard p,
+.featureCard p,
+.contactCard p,
+.pathCard p,
+.banner p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.subjectList,
+.moduleList,
+.contactList {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  list-style: none;
+}
+
+.subjectList li,
+.moduleList li,
+.contactList li {
+  position: relative;
+  padding-left: 1rem;
+  color: #dce9ff;
+}
+
+.subjectList li::before,
+.moduleList li::before,
+.contactList li::before {
+  content: "";
+  position: absolute;
+  top: 0.62rem;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.resourceCard,
+.banner {
+  display: block;
+}
+
+.resourceCard:hover,
+.banner:hover {
+  transform: translateY(-2px);
+}
+
+.resourceCard,
+.banner,
+.specialtyCard,
+.pathCard,
+.contactCard,
+.featureCard,
+.stageCard,
+.metricCard {
+  transition: transform 180ms ease;
+}
+
+.tagList,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tagList span,
+.action,
+.secondaryAction {
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+}
+
+.tagList span {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: #dce9ff;
+}
+
+.action {
+  background: linear-gradient(135deg, var(--accent), #66ffd7);
+  color: #04202c;
+  font-weight: 800;
+}
+
+.secondaryAction {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+}
+
+@media (max-width: 1120px) {
+  .metrics,
+  .stageGrid,
+  .resourceGrid,
+  .specialtyGrid,
+  .featureGrid,
+  .contactGrid,
+  .pathGrid,
+  .banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  .page {
+    width: min(1200px, calc(100vw - 1rem));
+  }
+
+  .actions {
+    align-items: stretch;
+  }
+
+  .action,
+  .secondaryAction {
+    width: 100%;
+    text-align: center;
+  }
+}

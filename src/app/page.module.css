@@ -1,142 +1,1094 @@
+.pageShell {
+  position: relative;
+}
+
+.pageShell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(157, 189, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
+  width: min(1240px, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 5rem;
+}
 
-  --text-primary: #000;
-  --text-secondary: #666;
+.section {
+  position: relative;
+  margin-top: 2rem;
+  padding: 3rem 0;
+}
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
+/* â”€â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.heroSection {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  min-height: calc(100vh - 7rem);
+  padding-top: 7rem;
+  overflow: hidden;
+}
 
+.heroBackdrop {
+  position: absolute;
+  inset: 5rem -14vw auto;
+  height: 52rem;
+  background:
+    radial-gradient(ellipse at 14% 22%, rgba(47, 244, 216, 0.32), transparent 34%),
+    radial-gradient(ellipse at 88% 18%, rgba(255, 124, 40, 0.26), transparent 30%),
+    radial-gradient(ellipse at 50% 70%, rgba(124, 107, 255, 0.26), transparent 38%);
+  filter: blur(34px);
+  z-index: 0;
+  animation: orb-drift 16s ease-in-out infinite;
+}
+
+.heroCopy,
+.heroPanel,
+.ctaBanner,
+.opsCard,
+.trackCard,
+.differentiatorCard,
+.timelineCard,
+.pillarCard,
+.experienceCard,
+.metricCard {
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.055), transparent 40%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.heroCopy {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  gap: 1.35rem;
+  padding: clamp(1.75rem, 2vw, 2.75rem);
+  border-radius: var(--radius-xl);
 }
 
-.main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+.heroPanel {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  padding: clamp(1rem, 1.8vw, 1.75rem);
+  border-radius: var(--radius-xl);
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
+.heroBadge {
+  display: inline-flex;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
+  gap: 0.65rem;
   width: fit-content;
-  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(47, 244, 216, 0.24);
+  border-radius: 999px;
+  background: rgba(47, 244, 216, 0.07);
+  color: #ccfff6;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.heroBadgeDot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-glow 2.4s ease-in-out infinite;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.heroLead,
+.panelEyebrow,
+.experienceLabel,
+.ctaLabel,
+.timelinePhase,
+.opsLabel,
+.cardIndex {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7.5vw, 5.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #ffffff 0%, #2ff4d8 55%, #7c6bff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 40px rgba(47, 244, 216, 0.22));
+}
+
+.heroDescription,
+.heroProof p,
+.metricCard p,
+.differentiatorCard p,
+.trackCard p,
+.timelineCard p,
+.pillarCard p,
+.experienceCard p,
+.opsCard p,
+.ctaBanner p {
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.heroActions,
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.primaryAction,
+.secondaryAction,
+.mailAction,
+.linkAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.1rem;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.primaryAction {
+  background: linear-gradient(135deg, var(--accent), #5fffdf);
+  color: #031a16;
+  font-weight: 800;
+  box-shadow: 0 0 28px rgba(47, 244, 216, 0.28);
+  animation: cta-pulse 3s ease-in-out infinite;
+}
+
+.secondaryAction,
+.mailAction,
+.linkAction {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--foreground);
+}
+
+.primaryAction:hover {
+  animation: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0 52px rgba(47, 244, 216, 0.55);
+}
+
+.secondaryAction:hover,
+.mailAction:hover,
+.linkAction:hover {
+  transform: translateY(-2px);
+  border-color: rgba(47, 244, 216, 0.4);
+}
+
+.heroProof {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.heroProofList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.heroProofList li {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #c8dcff;
+  font-size: 0.88rem;
+}
+
+.heroSignal {
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(47, 244, 216, 0.1), transparent 60%),
+    rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(47, 244, 216, 0.12);
+}
+
+.heroSignal h2,
+.ctaBanner h2 {
+  margin: 0.4rem 0 0.9rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  line-height: 1.06;
+}
+
+/* ─── PANEL EMBLEM ─────────────────────────────────────── */
+.panelEmblem {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(47, 244, 216, 0.22);
+  background:
+    linear-gradient(135deg, rgba(47, 244, 216, 0.08), rgba(124, 107, 255, 0.06) 60%),
+    rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 32px rgba(47, 244, 216, 0.08) inset;
+}
+
+.panelEmblemGear {
+  flex-shrink: 0;
+  width: 2.8rem;
+  height: 2.8rem;
+  color: var(--accent);
+  animation: rotate-slow 22s linear infinite;
+}
+
+.panelEmblemLogo {
+  flex-shrink: 0;
+  width: 2.8rem !important;
+  height: 2.8rem !important;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.panelEmblemText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.panelEmblemAbbr {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #fff 10%, var(--accent) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.panelEmblemSub {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.panelEmblemBadge {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 244, 216, 0.28);
+  background: rgba(47, 244, 216, 0.1);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* â”€â”€â”€ METRIC GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.metricGrid,
+.programGrid,
+.routeCardGrid,
+.differentiatorGrid,
+.trackGrid,
+.profileGrid,
+.specialtyGrid,
+.pillarGrid,
+.experienceGrid,
+.opsGrid,
+.contactGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.metricGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ─── PROGRAM BANNER ──────────────────────────────────── */
+.programBanner {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(124, 107, 255, 0.18);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.programBannerImg {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.programGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.routeCardGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metricCard {
+  min-height: 11rem;
+  padding: 1.3rem;
+  border-radius: var(--radius-lg);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.metricCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow), var(--shadow-accent);
+}
+
+.metricValue {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  color: #fff;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #fff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metricCard h3,
+.differentiatorCard h3,
+.trackCard h3,
+.timelineCard h3,
+.pillarCard h3,
+.experienceCard h3,
+.opsCard h3 {
+  margin-bottom: 0.65rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* â”€â”€â”€ DIFFERENTIATORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.differentiatorGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.differentiatorCard {
+  min-height: 16rem;
+  padding: 1.6rem;
+  border-radius: var(--radius-lg);
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.differentiatorCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(47, 244, 216, 0.3);
+}
+
+.diffNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.2rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(47, 244, 216, 0.14), rgba(124, 107, 255, 0.14));
+  border: 1px solid rgba(47, 244, 216, 0.18);
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* â”€â”€â”€ CARDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.statementCard,
+.specialtyCard,
+.profileCard,
+.contactCard,
+.routeCard {
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 40%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.statementCard,
+.specialtyCard,
+.contactCard {
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+}
+
+.routeCard {
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.routeCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(47, 244, 216, 0.35);
+  box-shadow: var(--shadow), 0 0 40px rgba(47, 244, 216, 0.12);
+}
+
+.cardArrow {
+  margin-top: auto;
+  padding-top: 1.2rem;
+  color: var(--accent);
+  font-size: 1.3rem;
+  transition: transform 200ms ease;
+}
+
+.routeCard:hover .cardArrow {
+  transform: translateX(6px);
+}
+
+.statementCard h3,
+.specialtyCard h3,
+.contactCard h3,
+.routeCard h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.statementCard p,
+.specialtyCard p,
+.contactCard p,
+.profileCard p,
+.routeCard p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.cardIndex {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* â”€â”€â”€ TECH GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.techCard {
+  position: relative;
+  padding: 1.75rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 40%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: transform 220ms ease, border-color 220ms ease;
+}
+
+.techCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+
+.techCard:hover {
+  transform: translateY(-5px);
+}
+
+.techCard:hover::before {
+  opacity: 1;
+}
+
+.tech_accent {
+  --tech-hue: rgba(47, 244, 216, 0.14);
+  --tech-border: rgba(47, 244, 216, 0.3);
+}
+
+.tech_accent:hover {
+  border-color: var(--tech-border);
+}
+
+.tech_accent::before {
+  background: radial-gradient(ellipse at top left, rgba(47, 244, 216, 0.1), transparent 60%);
+}
+
+.tech_violet {
+  --tech-hue: rgba(124, 107, 255, 0.12);
+  --tech-border: rgba(124, 107, 255, 0.3);
+}
+
+.tech_violet:hover {
+  border-color: var(--tech-border);
+}
+
+.tech_violet::before {
+  background: radial-gradient(ellipse at top left, rgba(124, 107, 255, 0.1), transparent 60%);
+}
+
+.tech_orange {
+  --tech-hue: rgba(255, 124, 40, 0.12);
+  --tech-border: rgba(255, 124, 40, 0.3);
+}
+
+.tech_orange:hover {
+  border-color: var(--tech-border);
+}
+
+.tech_orange::before {
+  background: radial-gradient(ellipse at top left, rgba(255, 124, 40, 0.1), transparent 60%);
+}
+
+.tech_green {
+  --tech-hue: rgba(72, 255, 160, 0.12);
+  --tech-border: rgba(72, 255, 160, 0.3);
+}
+
+.tech_green:hover {
+  border-color: var(--tech-border);
+}
+
+.tech_green::before {
+  background: radial-gradient(ellipse at top left, rgba(72, 255, 160, 0.1), transparent 60%);
+}
+
+.techIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.1rem;
+  border-radius: 14px;
+  background: var(--tech-hue, rgba(47, 244, 216, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  font-style: normal;
+}
+
+.techCard h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+.techCard > p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.1rem;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.techList li {
+  padding: 0.38rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #c8dcff;
+  font-size: 0.84rem;
+}
+
+/* â”€â”€â”€ TICKER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.tickerSection {
+  padding: 2rem 0;
+  border-top: 1px solid var(--panel-border);
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.tickerLabel {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* â”€â”€â”€ PROFILE GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.trackGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.profileGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.profileCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.profileCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(47, 244, 216, 0.28);
+}
+
+.profileCheck {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: rgba(47, 244, 216, 0.12);
+  border: 1px solid rgba(47, 244, 216, 0.24);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-top: 0.12rem;
+}
+
+.specialtyGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.trackCard {
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.trackCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 124, 40, 0.32);
+}
+
+.trackHeader {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.trackHeader span {
+  width: fit-content;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 124, 40, 0.12);
+  color: #ffdbb8;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.trackCard ul {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+
+.trackCard li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: #d4e4ff;
+  font-size: 0.96rem;
+}
+
+.trackCard li::before {
+  content: "";
+  position: absolute;
+  top: 0.56rem;
+  left: 0;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* â”€â”€â”€ TIMELINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.timeline {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.timelineCard {
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.timelineCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(47, 244, 216, 0.3);
+}
+
+.timelineNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(47, 244, 216, 0.2), rgba(124, 107, 255, 0.2));
+  border: 1px solid rgba(47, 244, 216, 0.22);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.timelineTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.timelineTags span {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #c8dcff;
+  font-size: 0.82rem;
+}
+
+/* â”€â”€â”€ PILLARS / EXPERIENCE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.pillarGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.pillarCard {
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+  border-left: 3px solid var(--accent) !important;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.pillarCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow), var(--shadow-accent);
+}
+
+.pillarCard h3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.experienceGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.experienceCard {
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.experienceCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 107, 255, 0.3);
+}
+
+/* â”€â”€â”€ OPS / ADMISIÃ“N â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.opsGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1.4rem;
+}
+
+.opsCard {
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.opsCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(47, 244, 216, 0.3);
+}
+
+/* â”€â”€â”€ CTA BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ctaBanner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(47, 244, 216, 0.2) !important;
+  background:
+    linear-gradient(135deg, rgba(47, 244, 216, 0.07), rgba(124, 107, 255, 0.06)),
+    var(--panel) !important;
+  box-shadow: var(--shadow), 0 0 60px rgba(47, 244, 216, 0.1) !important;
+  margin-bottom: 1rem;
+}
+
+/* â”€â”€â”€ CONTACT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.contactLayout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 1.25rem;
+}
+
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.6rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.045), transparent 40%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  height: 100%;
+}
+
+.contactCardAccent {
+  border-color: rgba(47, 244, 216, 0.28);
+  background:
+    linear-gradient(145deg, rgba(47, 244, 216, 0.07), transparent 55%),
+    var(--panel);
+}
+
+.contactCard h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.contactHead {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-bottom: 0.2rem;
+}
+
+.contactHours {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.contactNote {
+  color: #ff7c28;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.contactList {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+/* ─── MAP CARD ──────────────────────────────────────────────────────────────── */
+.contactIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 8px;
+  background: rgba(47, 244, 216, 0.1);
+  border: 1px solid rgba(47, 244, 216, 0.2);
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.contactList li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.contactList a {
+  color: var(--foreground);
+  transition: color 180ms ease;
+  word-break: break-all;
+}
+
+.contactList a:hover {
+  color: var(--accent);
+}
+
+.contactMapCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.4rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.045), transparent 40%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.contactMapAddress {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.mapFrame {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(47, 244, 216, 0.16);
+  box-shadow: 0 0 32px rgba(47, 244, 216, 0.06) inset;
+}
+
+.mapFrame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: grayscale(30%) contrast(1.05);
+  transition: filter 300ms ease;
+}
+
+.mapFrame:hover iframe {
+  filter: grayscale(0%) contrast(1.05);
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 244, 216, 0.22);
+  background: rgba(47, 244, 216, 0.07);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  width: fit-content;
+  transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.mapLink:hover {
+  border-color: rgba(47, 244, 216, 0.45);
+  background: rgba(47, 244, 216, 0.13);
+  transform: translateY(-2px);
+}
+
+/* â”€â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (max-width: 1120px) {
+  .heroSection,
+  .programGrid,
+  .routeCardGrid,
+  .specialtyGrid,
+  .profileGrid,
+  .trackGrid,
+  .timeline,
+  .pillarGrid,
+  .experienceGrid,
+  .opsGrid,
+  .contactLayout,
+  .techGrid {
+    grid-template-columns: 1fr;
   }
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  .mapFrame {
+    height: 260px;
+  }
+
+  .differentiatorGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ctaBanner {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
+@media (max-width: 780px) {
   .page {
-    --background: #000;
-    --foreground: #000;
+    width: min(1240px, calc(100vw - 1rem));
+  }
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+  .heroSection {
+    min-height: auto;
+    padding-top: 6rem;
+  }
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .metricGrid,
+  .differentiatorGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroTitle {
+    max-width: none;
+  }
+
+  .heroActions,
+  .ctaActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .primaryAction,
+  .secondaryAction,
+  .mailAction,
+  .linkAction {
+    width: 100%;
   }
 }
