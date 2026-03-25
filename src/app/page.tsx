@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
@@ -10,6 +11,7 @@ import { SkillsTicker } from "@/components/site/SkillsTicker";
 import { TerminalWindow } from "@/components/site/TerminalWindow";
 import { NeuralNetCanvas, MatrixRainCanvas, SortBarsCanvas, NetTopoCanvas } from "@/components/site/TechDemos";
 import demoStyles from "@/components/site/TechDemos.module.css";
+import { ProjectModal, type ProjectModalData } from "@/components/site/ProjectModal";
 import {
   differentiators,
   divisionContact,
@@ -82,8 +84,91 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const projectCards: Array<{
+  badge: string;
+  badgeClass: string;
+  title: string;
+  desc: string;
+  Canvas: React.ComponentType<{ className?: string }>;
+  modal: ProjectModalData;
+}> = [
+  {
+    badge: "Web & Fullstack",
+    badgeClass: demoStyles.demoBadge_blue,
+    title: "Sistema de inventario con React y Node.js",
+    desc: "Aplicación web fullstack para gestión de productos, usuarios y reportes. Frontend en React, API REST en Node.js y base de datos MySQL.",
+    Canvas: NeuralNetCanvas,
+    modal: {
+      title: "Sistema de inventario con React y Node.js",
+      technologies: ["React", "Node.js", "MySQL", "JWT", "CSS Grid", "REST API"],
+      steps: [
+        { bold: "Diseña la base de datos", detail: "defines tablas de productos, usuarios y movimientos. Modelado relacional con MySQL." },
+        { bold: "Construye la API REST", detail: "Node.js + Express expone endpoints como GET /productos, POST /entrada, DELETE /producto/:id." },
+        { bold: "Conecta el frontend", detail: "React consume la API con fetch o axios. El estado global se maneja con Context o Redux." },
+        { bold: "Despliega y asegura", detail: "JWT protege las rutas privadas, Docker empaqueta el proyecto, Git lo versiona." },
+      ],
+      semesterInfo: "Semestres 3-5: Programación Web, Bases de Datos. Semestres 6-7: Arquitectura de Software, Desarrollo de Aplicaciones Web.",
+    },
+  },
+  {
+    badge: "Backend & Seguridad",
+    badgeClass: demoStyles.demoBadge_green,
+    title: "API REST con autenticación JWT en Node.js",
+    desc: "Servicio backend con rutas protegidas, gestión de usuarios y tokens de acceso. Desplegado con Docker y documentado con Swagger.",
+    Canvas: MatrixRainCanvas,
+    modal: {
+      title: "API REST con autenticación JWT en Node.js",
+      technologies: ["Node.js", "Express", "JWT", "Docker", "Swagger", "MongoDB"],
+      steps: [
+        { bold: "Define los endpoints", detail: "POST /login, GET /usuarios, DELETE /usuario/:id. Cada ruta tiene un propósito y nivel de acceso." },
+        { bold: "Implementa JWT", detail: "al hacer login el servidor genera un token firmado. Cada petición protegida lo verifica antes de responder." },
+        { bold: "Modela los datos", detail: "MongoDB almacena usuarios con contraseñas hasheadas con bcrypt. Seguridad desde el diseño." },
+        { bold: "Dockeriza y documenta", detail: "el proyecto corre en un contenedor Docker. Swagger genera la documentación automáticamente." },
+      ],
+      semesterInfo: "Semestres 3-5: Programación Web, Bases de Datos. Semestres 6-8: Seguridad Informática, Redes, Arquitectura de Microservicios.",
+    },
+  },
+  {
+    badge: "Datos & Machine Learning",
+    badgeClass: demoStyles.demoBadge_orange,
+    title: "Clasificador de spam con Python y scikit-learn",
+    desc: "Modelo de machine learning entrenado con Naive Bayes para clasificación de correos. Exportado con joblib e integrado en una API Flask.",
+    Canvas: SortBarsCanvas,
+    modal: {
+      title: "Clasificador de spam con Python y scikit-learn",
+      technologies: ["Python", "scikit-learn", "Flask", "pandas", "joblib", "REST API"],
+      steps: [
+        { bold: "Prepara los datos", detail: "cargas un dataset de correos etiquetados como spam/no-spam con pandas. Limpias y vectorizas el texto." },
+        { bold: "Entrena el modelo", detail: "Naive Bayes clasifica texto en milisegundos. scikit-learn lo hace en pocas líneas de código." },
+        { bold: "Evalúa y exporta", detail: "mides precisión, recall y F1-score. Exportas el modelo con joblib para reutilizarlo." },
+        { bold: "Crea la API", detail: "Flask expone un endpoint que recibe texto y responde si es spam o no. Listo para producción." },
+      ],
+      semesterInfo: "Semestres 2-4: Fundamentos de Programación, Matemáticas Discretas. Semestres 6-8: Inteligencia Artificial, Análisis de Datos.",
+    },
+  },
+  {
+    badge: "Redes de computadoras",
+    badgeClass: demoStyles.demoBadge_pink,
+    title: "Simulador de topologías LAN/WAN con Cisco",
+    desc: "Diseño e implementación de redes con VLANs, enrutamiento OSPF y configuración de dispositivos Cisco en Packet Tracer.",
+    Canvas: NetTopoCanvas,
+    modal: {
+      title: "Simulador de topologías LAN/WAN con Cisco",
+      technologies: ["Cisco Packet Tracer", "VLANs", "OSPF", "TCP/IP", "Subnetting", "ACLs"],
+      steps: [
+        { bold: "Diseña la topología", detail: "defines cuántos routers, switches y hosts necesitas. Se dibuja antes de configurar." },
+        { bold: "Configura VLANs", detail: "segmentas la red por departamentos para aislar tráfico y mejorar la seguridad." },
+        { bold: "Implementa OSPF", detail: "el protocolo de enrutamiento dinámico calcula las mejores rutas entre redes automáticamente." },
+        { bold: "Aplica ACLs", detail: "las listas de control de acceso filtran tráfico. Solo pasa lo que está autorizado." },
+      ],
+      semesterInfo: "Semestres 4-6: Redes de Computadoras, Conmutación y Enrutamiento. Semestres 7-8: Administración de Redes, Ciberseguridad.",
+    },
+  },
+];
+
 export default function Home() {
   const { admissionsUrl, contactEmail, officialProgramUrl } = siteRuntimeConfig;
+  const [activeProject, setActiveProject] = useState<ProjectModalData | null>(null);
 
   return (
     <div className={styles.pageShell}>
@@ -255,6 +340,13 @@ export default function Home() {
             title="Seis áreas tecnológicas con aplicación directa en la industria."
             description="El programa cubre desde programación y bases de datos hasta redes, industria 4.0, inteligencia artificial y comercio electrónico. Esto es lo que construirás a lo largo de la carrera."
           />
+          <div className={styles.mHook}>
+            <span className={styles.mHookEmoji}>&#x1F680;</span>
+            <div className={styles.mHookBody}>
+              <p className={styles.mHookTitle}>La carrera donde el día 1 ya estás haciendo algo</p>
+              <p className={styles.mHookDesc}>Desde el primer semestre: algoritmos, lógica, código. Sin rodeos, sin relleno.</p>
+            </div>
+          </div>
           <AnimatedGrid className={styles.techGrid} stagger={0.08}>
             {techCategories.map((cat) => (
               <AnimatedCard key={cat.title}>
@@ -278,67 +370,35 @@ export default function Home() {
           <SectionHeading
             counter="04"
             eyebrow="Lo que construirás"
-            title="Proyectos reales que builds durante la carrera."
+            title="Proyectos reales que construyes durante la carrera."
             description="En ISC TESCHA desarrollas software, sistemas de datos, APIs y aplicaciones con tecnologías del mercado. Estos son ejemplos del tipo de proyectos que forman tu portafolio profesional."
           />
           <div className={demoStyles.demoGrid}>
-
-            <AnimatedCard>
-              <article className={demoStyles.demoCard}>
-                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_blue}`}>Web & Fullstack</span>
-                <p className={demoStyles.demoTitle}>Sistema de inventario con React y Node.js</p>
-                <div className={demoStyles.demoCanvas}>
-                  <NeuralNetCanvas />
-                </div>
-                <p className={demoStyles.demoDesc}>Aplicación web fullstack para gestión de productos, usuarios y reportes. Frontend en React, API REST en Node.js y base de datos MySQL.</p>
-                <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver área de formación &#x2197;
-                </a>
-              </article>
-            </AnimatedCard>
-
-            <AnimatedCard>
-              <article className={demoStyles.demoCard}>
-                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_green}`}>Backend & Seguridad</span>
-                <p className={demoStyles.demoTitle}>API REST con autenticación JWT en Node.js</p>
-                <div className={demoStyles.demoCanvas}>
-                  <MatrixRainCanvas />
-                </div>
-                <p className={demoStyles.demoDesc}>Servicio backend con rutas protegidas, gestión de usuarios y tokens de acceso. Desplegado con Docker y documentado con Swagger.</p>
-                <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver área de formación &#x2197;
-                </a>
-              </article>
-            </AnimatedCard>
-
-            <AnimatedCard>
-              <article className={demoStyles.demoCard}>
-                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_orange}`}>Datos & Machine Learning</span>
-                <p className={demoStyles.demoTitle}>Clasificador de spam con Python y scikit-learn</p>
-                <div className={demoStyles.demoCanvas}>
-                  <SortBarsCanvas />
-                </div>
-                <p className={demoStyles.demoDesc}>Modelo de machine learning entrenado con Naive Bayes para clasificación de correos. Exportado con joblib e integrado en una API Flask.</p>
-                <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver área de formación &#x2197;
-                </a>
-              </article>
-            </AnimatedCard>
-
-            <AnimatedCard>
-              <article className={demoStyles.demoCard}>
-                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_pink}`}>Redes de computadoras</span>
-                <p className={demoStyles.demoTitle}>Simulador de topologías LAN/WAN con Cisco</p>
-                <div className={demoStyles.demoCanvas}>
-                  <NetTopoCanvas />
-                </div>
-                <p className={demoStyles.demoDesc}>Diseño e implementación de redes con VLANs, enrutamiento OSPF y configuración de dispositivos Cisco en Packet Tracer.</p>
-                <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver área de formación &#x2197;
-                </a>
-              </article>
-            </AnimatedCard>
-
+            {projectCards.map((card) => {
+              const { Canvas } = card;
+              return (
+                <AnimatedCard key={card.title}>
+                  <article
+                    className={demoStyles.demoCard}
+                    onClick={() => setActiveProject(card.modal)}
+                    onKeyDown={(e) => e.key === "Enter" && setActiveProject(card.modal)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <span className={`${demoStyles.demoBadge} ${card.badgeClass}`}>{card.badge}</span>
+                    <p className={demoStyles.demoTitle}>{card.title}</p>
+                    <div className={demoStyles.demoCanvas}>
+                      <Canvas />
+                    </div>
+                    <p className={demoStyles.demoDesc}>{card.desc}</p>
+                    <span className={demoStyles.demoClickHint}>
+                      <span className={demoStyles.demoClickDot} aria-hidden="true" />
+                      Haz clic para ver cómo se construyó
+                    </span>
+                  </article>
+                </AnimatedCard>
+              );
+            })}
           </div>
         </AnimatedSection>
 
@@ -350,6 +410,13 @@ export default function Home() {
             title="Una carrera con formación técnica real y reconocimiento nacional."
             description="Programa oficial TecNM, especialidades vigentes, residencia profesional y un perfil de egreso orientado al mercado laboral tecnológico regional y nacional."
           />
+          <div className={styles.mHook}>
+            <span className={styles.mHookEmoji}>&#x26A1;</span>
+            <div className={styles.mHookBody}>
+              <p className={styles.mHookTitle}>No solo aprendes a programar</p>
+              <p className={styles.mHookDesc}>Aprendes a construir cosas que funcionan. Sistemas reales, datos reales, redes reales.</p>
+            </div>
+          </div>
           <AnimatedGrid className={styles.differentiatorGrid} stagger={0.08}>
             {differentiators.map((item) => (
               <AnimatedCard key={item.title}>
@@ -371,6 +438,13 @@ export default function Home() {
             title="Lo que sabe hacer un ingeniero que egresa de ISC TESCHA."
             description="El perfil oficial del TecNM define capacidades concretas en software, datos, redes y administración tecnológica. Competencias formadas durante nueve semestres de práctica y teoría."
           />
+          <div className={styles.mHook}>
+            <span className={styles.mHookEmoji}>&#x1F9E0;</span>
+            <div className={styles.mHookBody}>
+              <p className={styles.mHookTitle}>Egresa con portafolio, no solo título</p>
+              <p className={styles.mHookDesc}>Proyectos reales, residencia en empresa y nueve semestres que se traducen en trabajo.</p>
+            </div>
+          </div>
           <AnimatedGrid className={styles.profileGrid} stagger={0.05}>
             {graduateProfile.map((item) => (
               <AnimatedCard key={item}>
@@ -467,6 +541,13 @@ export default function Home() {
             title="Cómo entrar a Ingeniería en Sistemas en el TESCHA"
             description="El proceso de admisión sigue tres pasos sencillos: explorar el programa, consultar la convocatoria oficial y ponerte en contacto directo con el TESCHA."
           />
+          <div className={styles.mHook}>
+            <span className={styles.mHookEmoji}>&#x1F4BB;</span>
+            <div className={styles.mHookBody}>
+              <p className={styles.mHookTitle}>Si puedes imaginarlo, en ISC puedes construirlo</p>
+              <p className={styles.mHookDesc}>Apps, APIs, redes, IA, automatización. Elige tu área, domina las herramientas.</p>
+            </div>
+          </div>
           <AnimatedGrid className={styles.opsGrid} stagger={0.1}>
             {[
               {
@@ -611,6 +692,9 @@ export default function Home() {
         </AnimatedSection>
 
       </main>
+      {activeProject && (
+        <ProjectModal data={activeProject} onClose={() => setActiveProject(null)} />
+      )}
     </div>
   );
 }

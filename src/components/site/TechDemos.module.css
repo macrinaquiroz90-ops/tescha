@@ -17,6 +17,8 @@
   box-shadow: var(--shadow);
   backdrop-filter: blur(16px);
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  cursor: pointer;
+  user-select: none;
 }
 
 .demoCard:hover {
@@ -83,6 +85,25 @@
   font-size: 0.92rem;
   line-height: 1.65;
   flex: 1;
+}
+
+/* ─── Click hint ────────────────────────────────── */
+.demoClickHint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.demoClickDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-glow 2.4s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 /* ─── Action button ─────────────────────────────────────── */

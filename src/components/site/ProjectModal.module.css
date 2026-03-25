@@ -1,0 +1,202 @@
+/* ─── Dialog (native <dialog>) ─────────────────────────── */
+.dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: min(540px, calc(100vw - 2rem));
+  max-height: min(92dvh, 800px);
+  overflow-y: auto;
+  margin: auto;
+  padding: 0;
+  border: 1px solid rgba(47, 244, 216, 0.18);
+  border-radius: 1.4rem;
+  background: #0c1620;
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.055);
+  color: var(--foreground);
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+/* ─── Panel ─────────────────────────────────────────────── */
+.panel {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ─── Header ────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--foreground);
+}
+
+.closeBtn {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.closeBtn:hover {
+  border-color: rgba(47, 244, 216, 0.45);
+  background: rgba(47, 244, 216, 0.1);
+}
+
+/* ─── Section label ─────────────────────────────────────── */
+.blockLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+/* ─── Tech tags ─────────────────────────────────────────── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 244, 216, 0.22);
+  background: rgba(47, 244, 216, 0.07);
+  color: #ccfff6;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ─── Steps ─────────────────────────────────────────────── */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.step strong {
+  color: var(--foreground);
+}
+
+.stepNum {
+  flex-shrink: 0;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 107, 255, 0.38);
+  background: rgba(124, 107, 255, 0.1);
+  color: #c8c0ff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.22rem;
+}
+
+/* ─── Semester info ─────────────────────────────────────── */
+.semesterText {
+  font-size: 0.93rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ─── Actions ───────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), #5fffdf);
+  color: #031a16;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 36px rgba(47, 244, 216, 0.42);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.btnSecondary:hover {
+  border-color: rgba(47, 244, 216, 0.32);
+  background: rgba(47, 244, 216, 0.05);
+}
+
+/* ─── Mobile ────────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .panel {
+    padding: 1.4rem;
+  }
+
+  .dialog {
+    max-height: 96dvh;
+    border-radius: 1.1rem 1.1rem 0 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
