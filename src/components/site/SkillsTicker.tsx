@@ -1,15 +1,9 @@
 import styles from "./SkillsTicker.module.css";
 
 const SKILLS = [
-  "Python", "JavaScript", "TypeScript", "Java", "C++", "SQL",
-  "React", "Node.js", "Django", "Spring Boot", "Flutter",
-  "MySQL", "MongoDB", "PostgreSQL", "Redis",
-  "Docker", "Linux", "Redes TCP/IP", "Cisco",
-  "Inteligencia Artificial", "Machine Learning", "Análisis de Datos",
-  "Git", "GitHub", "Scrum", "Programación Web", "Programación Móvil",
-  "Bases de Datos", "Ciberseguridad", "Cloud Computing",
-  "Industria 4.0", "IoT", "Automatización", "E-commerce",
-  "Arquitectura de Software", "APIs REST", "Microservicios",
+  "Python", "JavaScript", "TypeScript", "Java", "React",
+  "Node.js", "SQL", "MongoDB", "Docker", "Git",
+  "APIs REST", "Machine Learning", "Linux", "Redes TCP/IP", "Scrum",
 ];
 
 export function SkillsTicker() {

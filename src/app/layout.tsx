@@ -6,23 +6,31 @@ import { siteRuntimeConfig } from "@/lib/site-config";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://isc-tescha.mx"),
+  metadataBase: new URL("https://tescha.pages.dev"),
   title: "Ingeniería en Sistemas Computacionales | TESCHA",
   description:
-    "Propuesta web moderna para la carrera de Ingeniería en Sistemas Computacionales del TESCHA.",
+    "Ingeniería en Sistemas Computacionales en el TESCHA — plan oficial TecNM, 9 semestres, especialidades en Industria 4.0 y Comercio Electrónico, Chalco, Estado de México.",
   openGraph: {
     title: "Ingeniería en Sistemas Computacionales | TESCHA",
     description:
-      "Una propuesta rápida, escalable y moderna para presentar la carrera con lenguaje de producto, tecnología y resultados.",
-    url: "https://isc-tescha.mx",
+      "Forma tu perfil como ingeniero en sistemas en el TESCHA. Plan oficial TecNM, residencia profesional, dos especialidades activas y egresados en el sector TI.",
+    url: "https://tescha.pages.dev",
     siteName: "ISC TESCHA",
     type: "website",
+    images: [
+      {
+        url: "/logos/Logo_Ingenieria_Sistemas.png",
+        width: 512,
+        height: 512,
+        alt: "Logo Ingeniería en Sistemas Computacionales TESCHA",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ingeniería en Sistemas Computacionales | TESCHA",
     description:
-      "Sitio institucional con arquitectura moderna, experiencia responsive y base lista para dev, QA y prod.",
+      "Ingeniería en Sistemas Computacionales en el TESCHA. Plan oficial TecNM, 9 semestres, especialidades en Industria 4.0 y Comercio Electrónico.",
   },
 };
 

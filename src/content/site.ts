@@ -19,7 +19,7 @@ export const siteCopy = {
     lead: "Tecnológico de Estudios Superiores de Chalco · TecNM",
     title: "Ingeniería en Sistemas Computacionales.",
     description:
-      "Forma ingenieros capaces de diseñar, desarrollar e implementar tecnología digital con impacto real. Nueve semestres, plan oficial TecNM, dos especialidades activas y salida directa al mercado tecnológico.",
+      "Plan oficial TecNM · 9 semestres · 2 especialidades · residencia profesional.",
     caption:
       "Carrera pública, con respaldo nacional, en el oriente del Estado de México. Orientada al perfil profesional que más demanda el sector TI en la región y el país.",
     highlights: [
@@ -451,6 +451,4 @@ export const divisionContact = {
   extension: "1121",
   email: "jefatura.sistemas@tesch.edu.mx",
   facebook: "https://www.facebook.com/sistematescha/",
-  website: "https://sictescha.000webhostapp.com/index.html",
-  websiteNote: "En mantenimiento",
 } as const;

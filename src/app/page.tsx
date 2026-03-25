@@ -38,15 +38,15 @@ const techCategories = [
   {
     icon: "[~]",
     color: "violet",
-    title: "Web & Movil",
+    title: "Web & Móvil",
     items: ["React", "Node.js", "Flutter", "APIs REST", "HTML/CSS"],
-    description: "Desarrollo de aplicaciones web y apps para dispositivos moviles.",
+    description: "Desarrollo de aplicaciones web y apps para dispositivos móviles.",
   },
   {
     icon: "[*]",
     color: "orange",
     title: "Datos & IA",
-    items: ["SQL", "MongoDB", "Machine Learning", "Analitica", "Visualizacion"],
+    items: ["SQL", "MongoDB", "Machine Learning", "Analítica", "Visualización"],
     description: "Bases de datos, inteligencia artificial y ciencia de datos aplicada.",
   },
   {
@@ -54,21 +54,21 @@ const techCategories = [
     color: "green",
     title: "Infraestructura",
     items: ["Linux", "Redes TCP/IP", "Cisco", "Ciberseguridad", "Cloud"],
-    description: "Administracion de redes, sistemas operativos y seguridad informatica.",
+    description: "Administración de redes, sistemas operativos y seguridad informática.",
   },
   {
     icon: "[i]",
     color: "violet",
     title: "Industria 4.0",
-    items: ["IoT", "Automatizacion", "Sistemas programables", "Robotica", "SCADA"],
-    description: "Transformacion digital, sistemas embebidos y manufactura inteligente.",
+    items: ["IoT", "Automatización", "Sistemas programables", "Robótica", "SCADA"],
+    description: "Transformación digital, sistemas embebidos y manufactura inteligente.",
   },
   {
     icon: "[$]",
     color: "orange",
     title: "Negocio Digital",
     items: ["E-commerce", "Plataformas", "UX/UI", "Marketing Digital", "ERP"],
-    description: "Comercio electronico, operacion digital y gestion de plataformas.",
+    description: "Comercio electrónico, operación digital y gestión de plataformas.",
   },
 ];
 
@@ -114,7 +114,7 @@ export default function Home() {
 
             <motion.div variants={fadeUp} className={styles.heroActions}>
               <a className={styles.primaryAction} href="#tecnologias">
-                Ver que aprenderas
+                Ver qué aprenderás
               </a>
               <a className={styles.secondaryAction} href={admissionsUrl} target="_blank" rel="noreferrer">
                 Ir a admisiones
@@ -173,7 +173,7 @@ export default function Home() {
 
         {/* TICKER */}
         <AnimatedSection className={styles.tickerSection}>
-          <p className={styles.tickerLabel}>Tecnologias y materias del programa</p>
+          <p className={styles.tickerLabel}>Tecnologías y materias del programa</p>
           <SkillsTicker />
         </AnimatedSection>
 
@@ -182,7 +182,7 @@ export default function Home() {
           <SectionHeading
             counter="01"
             eyebrow="Explora la carrera"
-            title="Todo lo que necesitas saber sobre ISC TESCHA esta aqui."
+            title="Todo lo que necesitas saber sobre ISC TESCHA está aquí."
             description="Plan de estudios, especialidades, perfil de egreso y datos de contacto institucional, organizados para aspirantes, estudiantes y empresas que buscan egresados."
           />
           <AnimatedGrid className={styles.routeCardGrid} stagger={0.1}>
@@ -204,8 +204,8 @@ export default function Home() {
           <SectionHeading
             counter="02"
             eyebrow="Programa oficial"
-            title="ISC TESCHA: objetivo formativo, vision y especialidades del programa."
-            description="El plan de estudios esta respaldado por el Tecnologico Nacional de Mexico. Conoce el objetivo formativo, la bienvenida institucional y las especialidades activas del programa."
+            title="ISC TESCHA: objetivo formativo, visión y especialidades del programa."
+            description="El plan de estudios está respaldado por el Tecnológico Nacional de México. Conoce el objetivo formativo, la bienvenida institucional y las especialidades activas del programa."
           />
 
           <div className={styles.programBanner}>
@@ -222,14 +222,14 @@ export default function Home() {
             <AnimatedCard>
               <article className={styles.statementCard}>
                 <p className={styles.cardIndex}>Bienvenida</p>
-                <h3>Una academia que plantea disciplina y proyeccion profesional</h3>
+                <h3>Una academia que plantea disciplina y proyección profesional</h3>
                 <p>{officialProgram.welcome}</p>
               </article>
             </AnimatedCard>
             <AnimatedCard>
               <article className={styles.statementCard}>
                 <p className={styles.cardIndex}>Objetivo</p>
-                <h3>Formacion con criterio tecnico, etico y vision estrategica</h3>
+                <h3>Formación con criterio técnico, ético y visión estratégica</h3>
                 <p>{officialProgram.objective}</p>
               </article>
             </AnimatedCard>
@@ -251,9 +251,9 @@ export default function Home() {
         <AnimatedSection className={styles.section} id="tecnologias">
           <SectionHeading
             counter="03"
-            eyebrow="Que aprenderas"
-            title="Seis areas tecnologicas con aplicacion directa en la industria."
-            description="El programa cubre desde programacion y bases de datos hasta redes, industria 4.0, inteligencia artificial y comercio electronico. Esto es lo que construiras a lo largo de la carrera."
+            eyebrow="Qué aprenderás"
+            title="Seis áreas tecnológicas con aplicación directa en la industria."
+            description="El programa cubre desde programación y bases de datos hasta redes, industria 4.0, inteligencia artificial y comercio electrónico. Esto es lo que construirás a lo largo de la carrera."
           />
           <AnimatedGrid className={styles.techGrid} stagger={0.08}>
             {techCategories.map((cat) => (
@@ -273,54 +273,54 @@ export default function Home() {
           </AnimatedGrid>
         </AnimatedSection>
 
-        {/* DEMOS INTERACTIVOS */}
+        {/* PROYECTOS REALES */}
         <AnimatedSection className={styles.section} id="demos">
           <SectionHeading
             counter="04"
-            eyebrow="Lo que construiras"
-            title="Practicas reales: de algoritmos a redes neuronales."
-            description="Estos son el tipo de proyectos y visualizaciones que los estudiantes de ISC construyen. Algoritmos, IA, protocolos de red y codigo real funcionando desde el navegador."
+            eyebrow="Lo que construirás"
+            title="Proyectos reales que builds durante la carrera."
+            description="En ISC TESCHA desarrollas software, sistemas de datos, APIs y aplicaciones con tecnologías del mercado. Estos son ejemplos del tipo de proyectos que forman tu portafolio profesional."
           />
           <div className={demoStyles.demoGrid}>
 
             <AnimatedCard>
               <article className={demoStyles.demoCard}>
-                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_blue}`}>Redes &amp; IA</span>
-                <p className={demoStyles.demoTitle}>Red neuronal / grafo de conexiones</p>
+                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_blue}`}>Web & Fullstack</span>
+                <p className={demoStyles.demoTitle}>Sistema de inventario con React y Node.js</p>
                 <div className={demoStyles.demoCanvas}>
                   <NeuralNetCanvas />
                 </div>
-                <p className={demoStyles.demoDesc}>Nodos que pulsan y se conectan, simulando redes de datos o capas de una red neuronal.</p>
+                <p className={demoStyles.demoDesc}>Aplicación web fullstack para gestión de productos, usuarios y reportes. Frontend en React, API REST en Node.js y base de datos MySQL.</p>
                 <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver area de formacion &#x2197;
+                  Ver área de formación &#x2197;
                 </a>
               </article>
             </AnimatedCard>
 
             <AnimatedCard>
               <article className={demoStyles.demoCard}>
-                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_green}`}>Programacion</span>
-                <p className={demoStyles.demoTitle}>Lluvia de codigo</p>
+                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_green}`}>Backend & Seguridad</span>
+                <p className={demoStyles.demoTitle}>API REST con autenticación JWT en Node.js</p>
                 <div className={demoStyles.demoCanvas}>
                   <MatrixRainCanvas />
                 </div>
-                <p className={demoStyles.demoDesc}>Columnas de caracteres cayendo, evocando la esencia del desarrollo de software.</p>
+                <p className={demoStyles.demoDesc}>Servicio backend con rutas protegidas, gestión de usuarios y tokens de acceso. Desplegado con Docker y documentado con Swagger.</p>
                 <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver area de formacion &#x2197;
+                  Ver área de formación &#x2197;
                 </a>
               </article>
             </AnimatedCard>
 
             <AnimatedCard>
               <article className={demoStyles.demoCard}>
-                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_orange}`}>Algoritmos</span>
-                <p className={demoStyles.demoTitle}>Visualizacion de algoritmos</p>
+                <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_orange}`}>Datos & Machine Learning</span>
+                <p className={demoStyles.demoTitle}>Clasificador de spam con Python y scikit-learn</p>
                 <div className={demoStyles.demoCanvas}>
                   <SortBarsCanvas />
                 </div>
-                <p className={demoStyles.demoDesc}>Barras que se reordenan en tiempo real, mostrando como funcionan los algoritmos de ordenamiento.</p>
+                <p className={demoStyles.demoDesc}>Modelo de machine learning entrenado con Naive Bayes para clasificación de correos. Exportado con joblib e integrado en una API Flask.</p>
                 <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver area de formacion &#x2197;
+                  Ver área de formación &#x2197;
                 </a>
               </article>
             </AnimatedCard>
@@ -328,13 +328,13 @@ export default function Home() {
             <AnimatedCard>
               <article className={demoStyles.demoCard}>
                 <span className={`${demoStyles.demoBadge} ${demoStyles.demoBadge_pink}`}>Redes de computadoras</span>
-                <p className={demoStyles.demoTitle}>Ondas de red / comunicacion</p>
+                <p className={demoStyles.demoTitle}>Simulador de topologías LAN/WAN con Cisco</p>
                 <div className={demoStyles.demoCanvas}>
                   <NetTopoCanvas />
                 </div>
-                <p className={demoStyles.demoDesc}>Pulsos que viajan de nodo a nodo, ilustrando protocolos de red y comunicacion entre sistemas.</p>
+                <p className={demoStyles.demoDesc}>Diseño e implementación de redes con VLANs, enrutamiento OSPF y configuración de dispositivos Cisco en Packet Tracer.</p>
                 <a className={demoStyles.demoAction} href="#tecnologias">
-                  Ver area de formacion &#x2197;
+                  Ver área de formación &#x2197;
                 </a>
               </article>
             </AnimatedCard>
@@ -346,9 +346,9 @@ export default function Home() {
         <AnimatedSection className={styles.section} id="valor">
           <SectionHeading
             counter="05"
-            eyebrow="Por que ISC TESCHA"
-            title="Una carrera con formacion tecnica real y reconocimiento nacional."
-            description="Programa oficial TecNM, especialidades vigentes, residencia profesional y un perfil de egreso orientado al mercado laboral tecnologico regional y nacional."
+            eyebrow="Por qué ISC TESCHA"
+            title="Una carrera con formación técnica real y reconocimiento nacional."
+            description="Programa oficial TecNM, especialidades vigentes, residencia profesional y un perfil de egreso orientado al mercado laboral tecnológico regional y nacional."
           />
           <AnimatedGrid className={styles.differentiatorGrid} stagger={0.08}>
             {differentiators.map((item) => (
@@ -369,7 +369,7 @@ export default function Home() {
             counter="06"
             eyebrow="Perfil de egreso"
             title="Lo que sabe hacer un ingeniero que egresa de ISC TESCHA."
-            description="El perfil oficial del TecNM define capacidades concretas en software, datos, redes y administracion tecnologica. Competencias formadas durante nueve semestres de practica y teoria."
+            description="El perfil oficial del TecNM define capacidades concretas en software, datos, redes y administración tecnológica. Competencias formadas durante nueve semestres de práctica y teoría."
           />
           <AnimatedGrid className={styles.profileGrid} stagger={0.05}>
             {graduateProfile.map((item) => (
@@ -405,9 +405,9 @@ export default function Home() {
         <AnimatedSection className={styles.section} id="ruta">
           <SectionHeading
             counter="07"
-            eyebrow="Trayectoria academica"
+            eyebrow="Trayectoria académica"
             title="De los fundamentos al despliegue profesional."
-            description="Cuatro etapas que llevan al estudiante de las bases matematicas y computacionales hasta la especializacion, el proyecto integrador y la residencia profesional."
+            description="Cuatro etapas que llevan al estudiante de las bases matemáticas y computacionales hasta la especialización, el proyecto integrador y la residencia profesional."
           />
           <AnimatedGrid className={styles.timeline} stagger={0.12}>
             {roadmapPhases.map((phase, i) => (
@@ -432,9 +432,9 @@ export default function Home() {
         <AnimatedSection className={styles.section} id="ecosistema">
           <SectionHeading
             counter="08"
-            eyebrow="Areas de formacion"
-            title="Las tres grandes areas en las que te forma ISC TESCHA."
-            description="Software, datos e infraestructura: los tres ejes tecnicos del programa, con experiencias formativas que conectan el aula con la industria real."
+            eyebrow="Áreas de formación"
+            title="Las tres grandes áreas en las que te forma ISC TESCHA."
+            description="Software, datos e infraestructura: los tres ejes técnicos del programa, con experiencias formativas que conectan el aula con la industria real."
           />
           <AnimatedGrid className={styles.pillarGrid} stagger={0.1}>
             {innovationPillars.map((pillar) => (
@@ -463,9 +463,9 @@ export default function Home() {
         <AnimatedSection className={styles.section} id="proyectos">
           <SectionHeading
             counter="09"
-            eyebrow="Admision"
-            title="Como entrar a Ingenieria en Sistemas en el TESCHA"
-            description="El proceso de admision sigue tres pasos sencillos: explorar el programa, consultar la convocatoria oficial y ponerte en contacto directo con el TESCHA."
+            eyebrow="Admisión"
+            title="Cómo entrar a Ingeniería en Sistemas en el TESCHA"
+            description="El proceso de admisión sigue tres pasos sencillos: explorar el programa, consultar la convocatoria oficial y ponerte en contacto directo con el TESCHA."
           />
           <AnimatedGrid className={styles.opsGrid} stagger={0.1}>
             {[
@@ -481,8 +481,8 @@ export default function Home() {
               },
               {
                 step: "03",
-                title: "Contactate con el TESCHA",
-                body: "Usa los telefonos, correo o redes oficiales para resolver dudas antes de iniciar tu tramite de ingreso.",
+                title: "Contáctate con el TESCHA",
+                body: "Usa los teléfonos, correo o redes oficiales para resolver dudas antes de iniciar tu trámite de ingreso.",
               },
             ].map((s) => (
               <AnimatedCard key={s.step}>
@@ -537,7 +537,7 @@ export default function Home() {
                   ))}
                   <li>
                     <span className={styles.contactIcon}>&#9990;</span>
-                    <span>Extension: <strong>{divisionContact.extension}</strong></span>
+                    <span>Extensión: <strong>{divisionContact.extension}</strong></span>
                   </li>
                   <li>
                     <span className={styles.contactIcon}>&#9993;</span>
@@ -548,15 +548,6 @@ export default function Home() {
                     <a href={divisionContact.facebook} target="_blank" rel="noreferrer">
                       facebook.com/sistematescha
                     </a>
-                  </li>
-                  <li>
-                    <span className={styles.contactIcon}>&#x1F310;</span>
-                    <span>
-                      <a href={divisionContact.website} target="_blank" rel="noreferrer">
-                        Sitio web de ISC
-                      </a>
-                      <span className={styles.contactNote}> ({divisionContact.websiteNote})</span>
-                    </span>
                   </li>
                 </ul>
               </article>
@@ -592,7 +583,7 @@ export default function Home() {
             {/* Map */}
             <AnimatedCard>
               <div className={styles.contactMapCard}>
-                <p className={styles.opsLabel}>Ubicacion del campus</p>
+                <p className={styles.opsLabel}>Ubicación del campus</p>
                 <div className={styles.mapFrame}>
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.1468054554157!2d-98.8416463!3d19.2324327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce1edeb90baded%3A0xcde95624c99f93f1!2sTecnol%C3%B3gico%20de%20Estudios%20Superiores%20de%20Chalco!5e0!3m2!1ses!2smx!4v1774390266801!5m2!1ses!2smx"
