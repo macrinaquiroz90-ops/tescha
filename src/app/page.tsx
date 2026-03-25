@@ -15,14 +15,18 @@ import { ProjectModal, type ProjectModalData } from "@/components/site/ProjectMo
 import {
   differentiators,
   divisionContact,
+  entryProfile,
   experienceBlocks,
   graduateProfile,
   heroMetrics,
   homeRouteCards,
   institutionalContact,
   innovationPillars,
+  laborField,
   learningTracks,
   officialProgram,
+  programPhilosophy,
+  programValues,
   roadmapPhases,
   siteCopy,
 } from "@/content/site";
@@ -332,10 +336,46 @@ export default function Home() {
           </AnimatedGrid>
         </AnimatedSection>
 
+        {/* FILOSOFÍA DEL PROGRAMA */}
+        <AnimatedSection className={styles.section}>
+          <SectionHeading
+            counter="03"
+            eyebrow="Filosofía del programa"
+            title="Visión, misión y valores que guían la formación en ISC TESCHA."
+            description="El programa basa su formación en una visión clara de liderazgo ético, misión de servicio social y seis valores institucionales del TecNM."
+          />
+          <AnimatedGrid className={styles.programGrid} stagger={0.1}>
+            <AnimatedCard>
+              <article className={styles.statementCard}>
+                <p className={styles.cardIndex}>Visión</p>
+                <h3>Formación con visión estratégica y sentido ético</h3>
+                <p>{programPhilosophy.vision}</p>
+              </article>
+            </AnimatedCard>
+            <AnimatedCard>
+              <article className={styles.statementCard}>
+                <p className={styles.cardIndex}>Misión del programa</p>
+                <h3>Soluciones de calidad con responsabilidad social</h3>
+                <p>{programPhilosophy.misionPrograma}</p>
+              </article>
+            </AnimatedCard>
+          </AnimatedGrid>
+          <AnimatedGrid className={styles.valueGrid} stagger={0.08}>
+            {programValues.map((val) => (
+              <AnimatedCard key={val.title}>
+                <article className={styles.valueCard}>
+                  <h3>{val.title}</h3>
+                  <p>{val.description}</p>
+                </article>
+              </AnimatedCard>
+            ))}
+          </AnimatedGrid>
+        </AnimatedSection>
+
         {/* QUE VAS A APRENDER */}
         <AnimatedSection className={styles.section} id="tecnologias">
           <SectionHeading
-            counter="03"
+            counter="04"
             eyebrow="Qué aprenderás"
             title="Seis áreas tecnológicas con aplicación directa en la industria."
             description="El programa cubre desde programación y bases de datos hasta redes, industria 4.0, inteligencia artificial y comercio electrónico. Esto es lo que construirás a lo largo de la carrera."
@@ -368,7 +408,7 @@ export default function Home() {
         {/* PROYECTOS REALES */}
         <AnimatedSection className={styles.section} id="demos">
           <SectionHeading
-            counter="04"
+            counter="05"
             eyebrow="Lo que construirás"
             title="Proyectos reales que construyes durante la carrera."
             description="En ISC TESCHA desarrollas software, sistemas de datos, APIs y aplicaciones con tecnologías del mercado. Estos son ejemplos del tipo de proyectos que forman tu portafolio profesional."
@@ -405,7 +445,7 @@ export default function Home() {
         {/* POR QUE ISC TESCHA */}
         <AnimatedSection className={styles.section} id="valor">
           <SectionHeading
-            counter="05"
+            counter="06"
             eyebrow="Por qué ISC TESCHA"
             title="Una carrera con formación técnica real y reconocimiento nacional."
             description="Programa oficial TecNM, especialidades vigentes, residencia profesional y un perfil de egreso orientado al mercado laboral tecnológico regional y nacional."
@@ -433,7 +473,7 @@ export default function Home() {
         {/* PERFIL DE EGRESO */}
         <AnimatedSection className={styles.section} id="arquitectura">
           <SectionHeading
-            counter="06"
+            counter="07"
             eyebrow="Perfil de egreso"
             title="Lo que sabe hacer un ingeniero que egresa de ISC TESCHA."
             description="El perfil oficial del TecNM define capacidades concretas en software, datos, redes y administración tecnológica. Competencias formadas durante nueve semestres de práctica y teoría."
@@ -478,7 +518,7 @@ export default function Home() {
         {/* ROADMAP */}
         <AnimatedSection className={styles.section} id="ruta">
           <SectionHeading
-            counter="07"
+            counter="08"
             eyebrow="Trayectoria académica"
             title="De los fundamentos al despliegue profesional."
             description="Cuatro etapas que llevan al estudiante de las bases matemáticas y computacionales hasta la especialización, el proyecto integrador y la residencia profesional."
@@ -505,7 +545,7 @@ export default function Home() {
         {/* AREAS DE FORMACION */}
         <AnimatedSection className={styles.section} id="ecosistema">
           <SectionHeading
-            counter="08"
+            counter="09"
             eyebrow="Áreas de formación"
             title="Las tres grandes áreas en las que te forma ISC TESCHA."
             description="Software, datos e infraestructura: los tres ejes técnicos del programa, con experiencias formativas que conectan el aula con la industria real."
@@ -533,10 +573,30 @@ export default function Home() {
           </AnimatedGrid>
         </AnimatedSection>
 
+        {/* CAMPO LABORAL */}
+        <AnimatedSection className={styles.section}>
+          <SectionHeading
+            counter="10"
+            eyebrow="Campo laboral"
+            title="Dónde trabaja un egresado de ISC TESCHA."
+            description="La carrera abre puertas en sectores de software, datos, redes, consultoría y emprendimiento tecnológico."
+          />
+          <AnimatedCard>
+            <div className={styles.laborCard}>
+              <p>{laborField.description}</p>
+              <ul className={styles.laborChips}>
+                {laborField.areas.map((area) => (
+                  <li className={styles.laborChip} key={area}>{area}</li>
+                ))}
+              </ul>
+            </div>
+          </AnimatedCard>
+        </AnimatedSection>
+
         {/* ADMISION */}
         <AnimatedSection className={styles.section} id="proyectos">
           <SectionHeading
-            counter="09"
+            counter="11"
             eyebrow="Admisión"
             title="Cómo entrar a Ingeniería en Sistemas en el TESCHA"
             description="El proceso de admisión sigue tres pasos sencillos: explorar el programa, consultar la convocatoria oficial y ponerte en contacto directo con el TESCHA."
@@ -547,6 +607,14 @@ export default function Home() {
               <p className={styles.mHookTitle}>Si puedes imaginarlo, en ISC puedes construirlo</p>
               <p className={styles.mHookDesc}>Apps, APIs, redes, IA, automatización. Elige tu área, domina las herramientas.</p>
             </div>
+          </div>
+          <div className={styles.entrySection}>
+            <p className={styles.entryLabel}>Perfil de ingreso — habilidades deseables en el aspirante</p>
+            <ul className={styles.entryChips}>
+              {entryProfile.map((skill) => (
+                <li className={styles.entryChip} key={skill}>{skill}</li>
+              ))}
+            </ul>
           </div>
           <AnimatedGrid className={styles.opsGrid} stagger={0.1}>
             {[

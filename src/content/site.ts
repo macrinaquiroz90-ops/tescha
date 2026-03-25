@@ -19,12 +19,12 @@ export const siteCopy = {
     lead: "Tecnológico de Estudios Superiores de Chalco · TecNM",
     title: "Ingeniería en Sistemas Computacionales.",
     description:
-      "Plan oficial TecNM · 9 semestres · 2 especialidades · residencia profesional.",
+      "Plan oficial TecNM · 9 semestres · 3 especialidades · residencia profesional.",
     caption:
       "Carrera pública, con respaldo nacional, en el oriente del Estado de México. Orientada al perfil profesional que más demanda el sector TI en la región y el país.",
     highlights: [
       "Plan oficial TecNM",
-      "2 especialidades activas",
+      "3 especialidades activas",
       "Residencia profesional incluida",
     ],
   },
@@ -71,14 +71,19 @@ export const officialProgram = {
     "Formar profesionistas con visión estratégica, sentido ético y capacidad para diseñar, desarrollar, implementar y administrar tecnología computacional orientada a soluciones innovadoras con impacto social.",
   specialties: [
     {
-      title: "Desarrollo de sistemas para la industria 4.0",
+      title: "Desarrollo de sistemas para la Industria 4.0",
       description:
-        "Ruta enfocada a automatización, transformación digital, programación web, análisis de datos, sistemas programables y herramientas que conectan software con operación industrial.",
+        "Automatización, transformación digital, sistemas programables y herramientas que conectan software con operación industrial.",
     },
     {
-      title: "Comercio electrónico",
+      title: "Desarrollo de Aplicaciones para Web y Dispositivos Móviles",
       description:
-        "Especialidad orientada a plataformas digitales de negocio, aplicaciones para comercio electrónico, infraestructura tecnológica y operación de entornos de venta en línea.",
+        "Frontend, backend, APIs y despliegue en plataformas para dispositivos móviles con tecnologías actuales del mercado.",
+    },
+    {
+      title: "Ciencia de Datos y Aplicaciones Inteligentes",
+      description:
+        "Analítica aplicada, modelos inteligentes, visualización de datos y automatización orientada a soporte de decisiones.",
     },
   ],
 } as const;
@@ -97,16 +102,28 @@ export const officialResources = [
     href: "https://tescha.edomex.gob.mx/plan-estudio-aspirantes",
   },
   {
-    title: "Objetivo y perfil de egreso",
+    title: "Objetivo y perfil de egreso (PDF)",
     description:
       "PDF oficial del TecNM con el objetivo general y las capacidades de egreso de ISC.",
-    href: "https://tescha.edomex.gob.mx/sites/tescha.edomex.gob.mx/files/files/Sistemas%20Computacionales/Objetivo%20y%20perfil%20de%20Egreso.pdf",
+    href: "/pdfs/objetivo-perfil-egreso.pdf",
   },
   {
-    title: "Retícula industria 4.0",
+    title: "Retícula Industria 4.0 (PDF)",
     description:
       "Documento con la estructura académica, distribución por periodos y total de créditos.",
-    href: "https://tescha.edomex.gob.mx/sites/tescha.edomex.gob.mx/files/files/Sistemas%20Computacionales/Reticula%20Especialidad%20Desarrollo%20de%20Sistemas%20para%20la%20Industria%204_0.pdf",
+    href: "/pdfs/reticula-industria-4.0.pdf",
+  },
+  {
+    title: "Retícula Web y Móvil (PDF)",
+    description:
+      "Estructura académica de la especialidad en Desarrollo de Aplicaciones para Web y Dispositivos Móviles.",
+    href: "/pdfs/reticula-web-movil.pdf",
+  },
+  {
+    title: "Retícula Ciencia de Datos (PDF)",
+    description:
+      "Estructura académica de la especialidad en Ciencia de Datos y Aplicaciones Inteligentes.",
+    href: "/pdfs/reticula-ciencia-datos.pdf",
   },
 ] as const;
 
@@ -272,10 +289,10 @@ export const heroMetrics = [
       "Total de créditos al egreso según la retícula oficial del plan TecNM para ISC.",
   },
   {
-    value: "2",
+    value: "3",
     label: "Especialidades",
     description:
-      "Industria 4.0 y Comercio Electrónico, con rutas en desarrollo web, móvil y ciencia de datos.",
+      "Industria 4.0, Desarrollo de Aplicaciones Web y Móvil, y Ciencia de Datos. Plan oficial TecNM.",
   },
   {
     value: "TecNM",
@@ -296,7 +313,7 @@ export const differentiators = [
     index: "02",
     title: "Especialidades vigentes",
     description:
-      "Industria 4.0 y Comercio Electrónico como rutas formales, más orientaciones en web, móvil y ciencia de datos alineadas al mercado actual.",
+      "Tres especialidades activas: Industria 4.0, Web y Móvil, y Ciencia de Datos, más orientaciones en comercio electrónico alineadas al mercado actual.",
   },
   {
     index: "03",
@@ -451,4 +468,147 @@ export const divisionContact = {
   extension: "1121",
   email: "jefatura.sistemas@tesch.edu.mx",
   facebook: "https://www.facebook.com/sistematescha/",
+} as const;
+
+export const programPhilosophy = {
+  vision:
+    "Formar profesionistas líderes con visión estratégica y amplio sentido ético; capaz de diseñar, desarrollar, implementar y administrar tecnología computacional para aportar soluciones innovadoras en beneficio de la sociedad; en un contexto global, multidisciplinario y sostenible.",
+  misionInstitucional:
+    "Ofrecer servicios de educación superior tecnológica de calidad, con cobertura nacional, pertinente y equitativa; para formar personas con competencia profesional integral que contribuyan al progreso de nuestro país.",
+  misionPrograma:
+    "Formar profesionistas en el área de ingeniería en sistemas computacionales que ofrezcan soluciones y servicios de calidad a la sociedad con alto sentido de responsabilidad.",
+} as const;
+
+export const programValues = [
+  {
+    title: "El ser Humano",
+    description:
+      "Respeto y dignidad como eje transversal de la formación profesional y personal.",
+  },
+  {
+    title: "El espíritu de servicio",
+    description:
+      "Disposición para contribuir con soluciones tecnológicas que mejoren la vida de las personas.",
+  },
+  {
+    title: "El liderazgo",
+    description:
+      "Capacidad para influir positivamente y orientar equipos hacia objetivos de impacto.",
+  },
+  {
+    title: "El trabajo en equipo",
+    description:
+      "Colaboración interdisciplinaria como medio para resolver problemas complejos.",
+  },
+  {
+    title: "La calidad",
+    description:
+      "Compromiso con la excelencia técnica y la mejora continua en cada entregable.",
+  },
+  {
+    title: "El alto desempeño",
+    description:
+      "Búsqueda constante de resultados superiores con criterio ético y profesional.",
+  },
+] as const;
+
+export const entryProfile = [
+  "Actitud de servicio",
+  "Capacidad creativa",
+  "Capacidad de adaptación",
+  "Capacidad de síntesis y de abstracción",
+  "Capacidad innovadora",
+  "Redacción de documentos",
+  "Trabajo en equipo",
+  "Comunicación y responsabilidad",
+  "Relaciones interpersonales",
+  "Habilidad lógica y matemática",
+  "Organización y orden",
+  "Trabajo en espacios cerrados",
+  "Respuesta ágil ante situaciones imprevistas",
+  "Valores para desempeño eficaz",
+] as const;
+
+export const modalidades = [
+  {
+    tag: "Presencial",
+    title: "Modalidad presencial",
+    description:
+      "Nueve semestres con asistencia regular a instalaciones del TESCHA. Disponible en turno matutino o vespertino según oferta vigente de cada periodo.",
+    details: ["9 semestres", "Turno matutino", "Turno vespertino"],
+  },
+  {
+    tag: "Semipresencial",
+    title: "Modalidad semipresencial",
+    description:
+      "Combina actividades en la plataforma virtual Moodle con sesiones presenciales programadas mensualmente para prácticas, evaluaciones y actividades que requieren asistencia física.",
+    details: [
+      "Plataforma Moodle",
+      "Asistencia mensual presencial",
+      "Prácticas y evaluaciones presenciales",
+    ],
+  },
+] as const;
+
+export const educationalObjectives = [
+  {
+    num: "01",
+    text: "Participan proactivamente en grupos multidisciplinarios como líderes en proyectos de sistemas e investigación.",
+  },
+  {
+    num: "02",
+    text: "Laboran con sentido ético alineados a normas nacionales e internacionales vigentes en su campo.",
+  },
+  {
+    num: "03",
+    text: "Realizan actualización profesional constante fomentando el emprendimiento y la innovación digital.",
+  },
+  {
+    num: "04",
+    text: "Se integran como profesionales en interpretación de datos, diseño e implementación de sistemas computacionales.",
+  },
+] as const;
+
+export const exitAttributes = [
+  {
+    num: "01",
+    text: "Implementa aplicaciones para diversos contextos y plataformas, integrando tecnologías actuales.",
+  },
+  {
+    num: "02",
+    text: "Diseña modelos computacionales con apoyo de herramientas matemáticas y formales.",
+  },
+  {
+    num: "03",
+    text: "Diseña interfaces y soluciones para automatización de hardware y software asociado.",
+  },
+  {
+    num: "04",
+    text: "Coordina equipos multidisciplinarios para implementar soluciones tecnológicas innovadoras.",
+  },
+  {
+    num: "05",
+    text: "Diseña, implementa y administra bases de datos cumpliendo normas y estándares vigentes.",
+  },
+  {
+    num: "06",
+    text: "Desarrolla software orientado a productividad, competitividad y estándares de calidad.",
+  },
+  {
+    num: "07",
+    text: "Detecta áreas de oportunidad y plantea proyectos con visión empresarial usando TIC.",
+  },
+] as const;
+
+export const laborField = {
+  description:
+    "El ingeniero en sistemas computacionales del TESCHA está preparado para desempeñarse en diseño, desarrollo e innovación en tecnologías de hardware y software; administración, desarrollo y mantenimiento de sistemas; proyectos de investigación en redes o ingeniería del software; consultoría externa y emprendimiento en la industria de programación.",
+  areas: [
+    "Diseño y desarrollo de software",
+    "Administración de sistemas",
+    "Investigación en redes",
+    "Ingeniería del software",
+    "Consultoría tecnológica",
+    "Emprendimiento en TI",
+  ],
 } as const;

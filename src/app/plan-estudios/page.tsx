@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import {
+  modalidades,
   officialResources,
   studyPlanStages,
   studyPlanSummary,
@@ -38,6 +39,28 @@ export default function StudyPlanPage() {
               <span className={styles.metricValue}>{item.value}</span>
               <h3>{item.label}</h3>
               <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Modalidades"
+          title="Elige la modalidad que más se adapta a tu situación."
+          description="ISC TESCHA ofrece dos modalidades de estudio para que puedas cursar la carrera según tus necesidades y disponibilidad."
+        />
+        <div className={styles.resourceGrid}>
+          {modalidades.map((m) => (
+            <article className={styles.specialtyCard} key={m.title}>
+              <p className={styles.cardLabel}>{m.tag}</p>
+              <h3>{m.title}</h3>
+              <p>{m.description}</p>
+              <ul className={styles.moduleList}>
+                {m.details.map((d) => (
+                  <li key={d}>{d}</li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>

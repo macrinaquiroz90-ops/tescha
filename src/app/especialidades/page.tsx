@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { officialResources, specializationShowcase } from "@/content/site";
+import {
+  educationalObjectives,
+  exitAttributes,
+  officialResources,
+  specializationShowcase,
+} from "@/content/site";
 import styles from "../section-page.module.css";
 
 export const metadata: Metadata = {
@@ -106,6 +111,38 @@ export default function SpecialtiesPage() {
               Ver plan para aspirantes
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Objetivos educacionales"
+          title="Lo que persigue ISC TESCHA en la formación de sus egresados."
+          description="Cuatro objetivos formales del plan TecNM que orientan el perfil de los ingresados al campo profesional y académico."
+        />
+        <div className={styles.stageGrid}>
+          {educationalObjectives.map((obj) => (
+            <article className={styles.stageCard} key={obj.num}>
+              <p className={styles.cardLabel}>Objetivo {obj.num}</p>
+              <p>{obj.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Atributos de egreso"
+          title="Siete competencias que el ingeniero desarrolla a lo largo de la carrera."
+          description="Atributos oficiales del TecNM para ISC: competencias técnicas específicas que definen las capacidades del perfil de egreso."
+        />
+        <div className={styles.specialtyGrid}>
+          {exitAttributes.map((attr) => (
+            <article className={styles.specialtyCard} key={attr.num}>
+              <p className={styles.cardLabel}>Atributo {attr.num}</p>
+              <p>{attr.text}</p>
+            </article>
+          ))}
         </div>
       </section>
     </main>
