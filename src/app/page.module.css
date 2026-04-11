@@ -375,10 +375,6 @@
 /* ─── PROGRAM BANNER ──────────────────────────────────── */
 .programBanner {
   width: 100%;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid rgba(124, 107, 255, 0.18);
-  box-shadow: var(--shadow);
   margin-bottom: 1.5rem;
 }
 
@@ -386,7 +382,8 @@
   width: 100% !important;
   height: auto !important;
   display: block;
-  mix-blend-mode: multiply;
+  max-height: 220px;
+  object-fit: contain;
 }
 
 .programGrid {
