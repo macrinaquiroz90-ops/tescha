@@ -1,22 +1,9 @@
-.wrapper {
-  overflow: hidden;
-  width: 100%;
-  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-}
-
-.track {
+.grid {
   display: flex;
-  gap: 0.75rem;
-  width: max-content;
-  animation: ticker 38s linear infinite;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
   padding: 0.4rem 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-  }
 }
 
 .pill {
@@ -38,25 +25,8 @@
   background: rgba(47, 244, 216, 0.12);
 }
 
-/* Móvil: grid de todos los pills */
-.mobileGrid {
-  display: none;
-}
-
 @media (max-width: 780px) {
-  .wrapper {
-    display: none;
-  }
-
-  .mobileGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding: 0.4rem 0;
-    justify-content: center;
-  }
-
-  .mobileGrid .pill {
+  .pill {
     font-size: 0.85rem;
     padding: 0.45rem 0.9rem;
   }

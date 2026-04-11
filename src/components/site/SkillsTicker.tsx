@@ -7,31 +7,13 @@ const SKILLS = [
 ];
 
 export function SkillsTicker() {
-  const doubled = [...SKILLS, ...SKILLS];
   return (
-    <>
-      {/* Desktop: ticker animado */}
-      <div className={styles.wrapper} aria-hidden="true">
-        <div className={styles.track}>
-          {doubled.map((skill, i) => (
-            <span
-              // biome-ignore lint/suspicious/noArrayIndexKey: ticker display list, order is fixed
-              key={i}
-              className={styles.pill}
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-      {/* Móvil: todos visibles en grid */}
-      <div className={styles.mobileGrid} aria-hidden="true">
-        {SKILLS.map((skill) => (
-          <span key={skill} className={styles.pill}>
-            {skill}
-          </span>
-        ))}
-      </div>
-    </>
+    <div className={styles.grid}>
+      {SKILLS.map((skill) => (
+        <span key={skill} className={styles.pill}>
+          {skill}
+        </span>
+      ))}
+    </div>
   );
 }
