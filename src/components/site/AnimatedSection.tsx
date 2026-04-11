@@ -28,7 +28,7 @@ export function AnimatedSection({
   id,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
     <motion.div
@@ -39,7 +39,7 @@ export function AnimatedSection({
       variants={variants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      transition={{ duration: 0.65, delay, ease: "circOut" }}
+      transition={{ duration: 0.35, delay, ease: "circOut" }}
     >
       {children}
     </motion.div>
@@ -56,7 +56,7 @@ export function AnimatedGrid({
   stagger?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-30px" });
 
   return (
     <motion.div
@@ -85,11 +85,12 @@ export function AnimatedCard({
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 32, scale: 0.96 },
+        hidden: { opacity: 0, y: 20, scale: 0.97 },
         visible: { opacity: 1, y: 0, scale: 1 },
       }}
-      transition={{ duration: 0.55, ease: "circOut" }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      transition={{ duration: 0.3, ease: "circOut" }}
+      whileHover={{ y: -4, transition: { duration: 0.15 } }}
+      style={{ willChange: "transform" }}
     >
       {children}
     </motion.div>
@@ -112,7 +113,7 @@ export function CountUp({
       className={className}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.6, ease: "circOut" }}
+      transition={{ duration: 0.4, ease: "circOut" }}
     >
       {value}
     </motion.span>

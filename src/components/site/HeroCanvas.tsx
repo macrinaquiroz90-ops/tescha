@@ -25,9 +25,11 @@ export function HeroCanvas() {
     if (!ctx) return;
 
     let raf: number;
+    let paused = false;
     const particles: Particle[] = [];
-    const COUNT = 72;
-    const CONNECTION_DIST = 140;
+    const COUNT = 40;
+    const CONNECTION_DIST = 100;
+    const CONNECTION_DIST_SQ = CONNECTION_DIST * CONNECTION_DIST;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth * window.devicePixelRatio;
@@ -73,8 +75,9 @@ export function HeroCanvas() {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
+          const distSq = dx * dx + dy * dy;
+          if (distSq < CONNECTION_DIST_SQ) {
+            const dist = Math.sqrt(distSq);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -87,14 +90,24 @@ export function HeroCanvas() {
       }
 
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(draw);
+      if (!paused) raf = requestAnimationFrame(draw);
     };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        paused = !entry.isIntersecting;
+        if (!paused) raf = requestAnimationFrame(draw);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
 
     raf = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      observer.disconnect();
     };
   }, []);
 
