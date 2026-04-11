@@ -37,3 +37,27 @@
   border-color: rgba(47, 244, 216, 0.42);
   background: rgba(47, 244, 216, 0.12);
 }
+
+/* Móvil: grid de todos los pills */
+.mobileGrid {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .wrapper {
+    display: none;
+  }
+
+  .mobileGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    justify-content: center;
+  }
+
+  .mobileGrid .pill {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+  }
+}
