@@ -1230,6 +1230,184 @@
   color: #c8e0ff;
   font-size: 0.86rem;
 }
+/* ─── CONVOCATORIA BADGE ──────────────────────────────────────── */
+.convoBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  padding: 0.55rem 1.1rem 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 124, 40, 0.35);
+  background: rgba(255, 124, 40, 0.08);
+  color: #ffdbb8;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+.convoBadge:hover {
+  background: rgba(255, 124, 40, 0.14);
+  border-color: rgba(255, 124, 40, 0.5);
+  transform: translateY(-1px);
+}
+
+.convoBadgeDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #ff7c28;
+  box-shadow: 0 0 8px rgba(255, 124, 40, 0.8);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ─── TESTIMONIALS ────────────────────────────────────────────── */
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.testimonialCard {
+  padding: 1.75rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--panel-border);
+  border-left: 3px solid rgba(47, 244, 216, 0.35);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 40%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(47, 244, 216, 0.45);
+}
+
+.testimonialQuote {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.97rem;
+  font-style: italic;
+  flex: 1;
+}
+
+.testimonialQuote::before {
+  content: "\201C";
+  display: block;
+  color: var(--accent);
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+}
+
+.testimonialMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.testimonialName {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+.testimonialRole {
+  font-size: 0.84rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.testimonialOrg {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ─── FAQ ─────────────────────────────────────────────────────── */
+.faqList {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faqItem {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 40%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: border-color 200ms ease;
+}
+
+.faqItem[open] {
+  border-color: rgba(47, 244, 216, 0.25);
+}
+
+.faqSummary {
+  list-style: none;
+  padding: 1.35rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  user-select: none;
+  transition: color 180ms ease;
+}
+
+.faqSummary::-webkit-details-marker {
+  display: none;
+}
+
+.faqSummary:hover {
+  color: #e8f8ff;
+}
+
+.faqIcon {
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(47, 244, 216, 0.22);
+  background: rgba(47, 244, 216, 0.06);
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1;
+  font-style: normal;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.faqItem[open] .faqIcon {
+  background: rgba(47, 244, 216, 0.14);
+  transform: rotate(45deg);
+}
+
+.faqAnswer {
+  padding: 0 1.5rem 1.35rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.97rem;
+}
+
 @media (max-width: 1120px) {
   .heroSection,
   .programGrid,
@@ -1244,7 +1422,8 @@
   .contactLayout,
   .techGrid,
   .valueGrid,
-  .attrGrid {
+  .attrGrid,
+  .testimonialGrid {
     grid-template-columns: 1fr;
   }
 
@@ -1304,6 +1483,18 @@
 
   .laborCard {
     padding: 1.5rem;
+  }
+  .faqSummary {
+    font-size: 0.93rem;
+    padding: 1.1rem 1.1rem;
+  }
+
+  .faqAnswer {
+    padding: 0 1.1rem 1.1rem;
+  }
+
+  .testimonialCard {
+    padding: 1.35rem;
   }
 }
 

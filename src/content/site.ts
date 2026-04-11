@@ -17,9 +17,9 @@ export const primaryNavigation = [
 export const siteCopy = {
   hero: {
     lead: "Tecnológico de Estudios Superiores de Chalco · TecNM",
-    title: "Ingeniería en Sistemas Computacionales.",
+    title: "Construye software que resuelve problemas reales.",
     description:
-      "Plan oficial TecNM · 9 semestres · 3 especialidades · residencia profesional.",
+      "Aprende a diseñar, programar y desplegar sistemas desde el primer semestre. Plan oficial TecNM · 9 semestres · 3 especialidades.",
     caption:
       "Carrera pública, con respaldo nacional, en el oriente del Estado de México. Orientada al perfil profesional que más demanda el sector TI en la región y el país.",
     highlights: [
@@ -597,6 +597,66 @@ export const exitAttributes = [
   {
     num: "07",
     text: "Detecta áreas de oportunidad y plantea proyectos con visión empresarial usando TIC.",
+  },
+] as const;
+
+export const convocatoriaNotice = {
+  text: "Convocatoria de ingreso 2025-2026 disponible",
+  href: "https://tescha.edomex.gob.mx/ing-sistemas-computacionales",
+} as const;
+
+export const testimonials = [
+  {
+    quote:
+      "La carrera me dio la base para conseguir trabajo antes de terminar la residencia. Los proyectos del semestre 6 son los que más me abrieron puertas.",
+    name: "Carlos M.",
+    role: "Egresado ISC TESCHA 2024",
+    org: "Desarrollador de software — empresa regional TI",
+  },
+  {
+    quote:
+      "Desde el segundo semestre ya tocas código real, no solo teoría. Mi especialidad en ciencia de datos me permitió entrar a un proyecto de análisis en una empresa de logística.",
+    name: "Daniela R.",
+    role: "Egresada ISC TESCHA 2023",
+    org: "Analista de datos — sector logístico",
+  },
+  {
+    quote:
+      "ISC TESCHA tiene el plan de estudios más completo del oriente del Estado de México. Los egresados que tengo en mi equipo siempre destacan por su base técnica sólida.",
+    name: "Ing. Roberto S.",
+    role: "Jefe de TI",
+    org: "Empresa del sector industrial",
+  },
+] as const;
+
+export const faqItems = [
+  {
+    q: "¿Cuánto tiempo dura la carrera y cuántos créditos son?",
+    a: "La carrera tiene una duración de 9 semestres con 210 créditos totales, más residencia profesional al concluir el plan de estudios.",
+  },
+  {
+    q: "¿Cuánto cuesta estudiar en el TESCHA?",
+    a: "El TESCHA es una institución pública del Estado de México. Sus cuotas son accesibles comparadas con universidades privadas. Consulta los montos vigentes en el portal institucional o contacta directamente a administración escolar.",
+  },
+  {
+    q: "¿Qué especialidades ofrece la carrera?",
+    a: "El plan ofrece tres especialidades: Desarrollo de Sistemas para la Industria 4.0, Desarrollo de Aplicaciones para Web y Dispositivos Móviles, y Ciencia de Datos y Aplicaciones Inteligentes.",
+  },
+  {
+    q: "¿Hay turno matutino y vespertino?",
+    a: "La disponibilidad de turnos varía por periodo. La modalidad presencial puede incluir turno matutino o vespertino. También existe modalidad semipresencial con plataforma Moodle y asistencia mensual. Confirma la oferta vigente en la convocatoria oficial.",
+  },
+  {
+    q: "¿Cómo es el proceso de admisión?",
+    a: "El proceso incluye registro, entrega de documentos y período de evaluación según la convocatoria oficial del TESCHA. Ingresa al portal institucional para ver los pasos exactos y fechas vigentes.",
+  },
+  {
+    q: "¿Cómo me tituło?",
+    a: "La titulación se realiza mediante residencia profesional al término del plan de estudios, cubriendo el total de créditos requeridos y los trámites administrativos correspondientes.",
+  },
+  {
+    q: "¿Los egresados consiguen trabajo fácilmente?",
+    a: "La ISC tiene alta demanda en el oriente del Estado de México. Los egresados se insertan en roles de desarrollo de software, administración de sistemas, análisis de datos, consultoría tecnológica y emprendimiento en TI.",
   },
 ] as const;
 

@@ -12,11 +12,14 @@ import { TerminalWindow } from "@/components/site/TerminalWindow";
 import { NeuralNetCanvas, MatrixRainCanvas, SortBarsCanvas, NetTopoCanvas } from "@/components/site/TechDemos";
 import demoStyles from "@/components/site/TechDemos.module.css";
 import { ProjectModal, type ProjectModalData } from "@/components/site/ProjectModal";
+import { ScrollToTop } from "@/components/site/ScrollToTop";
 import {
+  convocatoriaNotice,
   differentiators,
   divisionContact,
   entryProfile,
   experienceBlocks,
+  faqItems,
   graduateProfile,
   heroMetrics,
   homeRouteCards,
@@ -29,6 +32,7 @@ import {
   programValues,
   roadmapPhases,
   siteCopy,
+  testimonials,
 } from "@/content/site";
 import { siteRuntimeConfig } from "@/lib/site-config";
 import styles from "./page.module.css";
@@ -189,6 +193,18 @@ export default function Home() {
             animate="visible"
             variants={staggerContainer}
           >
+            <motion.a
+              variants={fadeUp}
+              href={convocatoriaNotice.href}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.convoBadge}
+            >
+              <span className={styles.convoBadgeDot} aria-hidden="true" />
+              {convocatoriaNotice.text}
+              <span aria-hidden="true">&#8594;</span>
+            </motion.a>
+
             <motion.div variants={fadeUp} className={styles.heroBadge}>
               <span className={styles.heroBadgeDot} />
               {siteCopy.hero.lead}
@@ -202,11 +218,11 @@ export default function Home() {
             </motion.p>
 
             <motion.div variants={fadeUp} className={styles.heroActions}>
-              <a className={styles.primaryAction} href="#tecnologias">
-                Ver qué aprenderás
+              <a className={styles.primaryAction} href={admissionsUrl} target="_blank" rel="noreferrer">
+                Ir a admisiones &#8594;
               </a>
-              <a className={styles.secondaryAction} href={admissionsUrl} target="_blank" rel="noreferrer">
-                Ir a admisiones
+              <a className={styles.secondaryAction} href="#tecnologias">
+                Ver qué aprenderás
               </a>
             </motion.div>
 
@@ -593,10 +609,57 @@ export default function Home() {
           </AnimatedCard>
         </AnimatedSection>
 
+        {/* TESTIMONIOS */}
+        <AnimatedSection className={styles.section} id="testimonios">
+          <SectionHeading
+            counter="12"
+            eyebrow="Testimonios"
+            title="Lo que dicen egresados y empresas sobre ISC TESCHA."
+            description="Opiniones de quienes pasaron por la carrera y de empleadores que han contratado egresados del programa."
+          />
+          <AnimatedGrid className={styles.testimonialGrid} stagger={0.1}>
+            {testimonials.map((t) => (
+              <AnimatedCard key={t.name}>
+                <article className={styles.testimonialCard}>
+                  <p className={styles.testimonialQuote}>{t.quote}</p>
+                  <div className={styles.testimonialMeta}>
+                    <span className={styles.testimonialName}>{t.name}</span>
+                    <span className={styles.testimonialRole}>{t.role}</span>
+                    <span className={styles.testimonialOrg}>{t.org}</span>
+                  </div>
+                </article>
+              </AnimatedCard>
+            ))}
+          </AnimatedGrid>
+        </AnimatedSection>
+
+        {/* PREGUNTAS FRECUENTES */}
+        <AnimatedSection className={styles.section} id="faq">
+          <SectionHeading
+            counter="13"
+            eyebrow="Preguntas frecuentes"
+            title="Resolvemos las dudas más comunes sobre la carrera."
+            description="Si tienes más preguntas, contacta directamente con la jefatura de división ISC o el departamento de admisiones del TESCHA."
+          />
+          <div className={styles.faqList}>
+            {faqItems.map((item) => (
+              <AnimatedCard key={item.q}>
+                <details className={styles.faqItem}>
+                  <summary className={styles.faqSummary}>
+                    <span>{item.q}</span>
+                    <span className={styles.faqIcon} aria-hidden="true">+</span>
+                  </summary>
+                  <p className={styles.faqAnswer}>{item.a}</p>
+                </details>
+              </AnimatedCard>
+            ))}
+          </div>
+        </AnimatedSection>
+
         {/* ADMISION */}
         <AnimatedSection className={styles.section} id="proyectos">
           <SectionHeading
-            counter="11"
+            counter="14"
             eyebrow="Admisión"
             title="Cómo entrar a Ingeniería en Sistemas en el TESCHA"
             description="El proceso de admisión sigue tres pasos sencillos: explorar el programa, consultar la convocatoria oficial y ponerte en contacto directo con el TESCHA."
@@ -763,6 +826,7 @@ export default function Home() {
       {activeProject && (
         <ProjectModal data={activeProject} onClose={() => setActiveProject(null)} />
       )}
+      <ScrollToTop />
     </div>
   );
 }
