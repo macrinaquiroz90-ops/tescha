@@ -282,6 +282,28 @@ export default function Home() {
           <SkillsTicker />
         </AnimatedSection>
 
+        {/* ASPIRANTE HOOK */}
+        <AnimatedSection>
+          <div className={styles.aspiranteHook}>
+            <div className={styles.aspiranteLeft}>
+              <p className={styles.aspiranteEyebrow}>Para quien está decidiendo su carrera</p>
+              <p className={styles.aspiranteTitle}>
+                No necesitas saber programar para entrar.<br />
+                Necesitas querer construir cosas.
+              </p>
+              <p className={styles.aspiranteDesc}>
+                Si te gustan los videojuegos, las apps, las redes o simplemente "cómo funciona todo eso", ya tienes el perfil. ISC TESCHA empieza desde cero: lógica, algoritmos y código desde el primer semestre.
+              </p>
+            </div>
+            <ul className={styles.aspiranteList}>
+              <li>Empiezas desde lógica y algoritmos</li>
+              <li>No se requiere experiencia previa</li>
+              <li>Aprenderás a programar en la carrera</li>
+              <li>El plan te guía paso a paso, semestre a semestre</li>
+            </ul>
+          </div>
+        </AnimatedSection>
+
         {/* NAV CARDS */}
         <AnimatedSection className={styles.section}>
           <SectionHeading
@@ -429,6 +451,15 @@ export default function Home() {
             title="Proyectos reales que construyes durante la carrera."
             description="En ISC TESCHA desarrollas software, sistemas de datos, APIs y aplicaciones con tecnologías del mercado. Estos son ejemplos del tipo de proyectos que forman tu portafolio profesional."
           />
+          <div className={styles.mHook}>
+            <span className={styles.mHookEmoji} aria-hidden="true">&#x23F1;</span>
+            <div className={styles.mHookBody}>
+              <p className={styles.mHookTitle}>¿Cuándo se hacen estos proyectos?</p>
+              <p className={styles.mHookDesc}>
+                Estos proyectos los alcanzas en los semestres 5 al 8, cuando ya tienes las bases. Los primeros semestres construyes lo fundamental: lógica, algoritmos, matemáticas y programación. Todo avanza paso a paso, semestre a semestre.
+              </p>
+            </div>
+          </div>
           <div className={demoStyles.demoGrid}>
             {projectCards.map((card) => {
               const { Canvas } = card;

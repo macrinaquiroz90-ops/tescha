@@ -22,6 +22,14 @@
   line-height: 1.7;
 }
 
+.credit {
+  margin-top: 0.45rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(160, 185, 220, 0.55);
+  font-style: italic;
+}
+
 @media (max-width: 780px) {
   .footer {
     width: min(1200px, calc(100vw - 1rem));
