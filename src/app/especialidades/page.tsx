@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { ProjectsSection } from "@/components/site/ProjectsSection";
 import {
   educationalObjectives,
   exitAttributes,
+  innovationPillars,
   officialResources,
   specializationShowcase,
 } from "@/content/site";
@@ -43,6 +45,31 @@ export default function SpecialtiesPage() {
                   <li key={module}>{module}</li>
                 ))}
               </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Proyectos reales"
+          title="Lo que construyes durante la carrera — semestres 5 al 8."
+          description="Los primeros semestres construyes la base: lógica, algoritmos, matemáticas y programación. Los proyectos de software completo llegan en la fase de especialización."
+        />
+        <ProjectsSection />
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Áreas de formación"
+          title="Las tres grandes áreas en las que te forma ISC TESCHA."
+          description="Software, datos e infraestructura: los tres ejes técnicos del programa con experiencias que conectan el aula con la industria real."
+        />
+        <div className={styles.featureGrid}>
+          {innovationPillars.map((pillar) => (
+            <article className={styles.featureCard} key={pillar.title}>
+              <h3>{pillar.title}</h3>
+              <p>{pillar.description}</p>
             </article>
           ))}
         </div>

@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import {
+  graduateProfile,
+  laborField,
+  learningTracks,
   modalidades,
   officialResources,
+  roadmapPhases,
   studyPlanStages,
   studyPlanSummary,
 } from "@/content/site";
@@ -87,6 +91,81 @@ export default function StudyPlanPage() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Lo que aprenderás"
+          title="Tres rutas tecnológicas que forman el perfil del egresado."
+          description="El plan integra competencias en software, datos e infraestructura para prepararte en los tres frentes técnicos con más demanda en el mercado actual."
+        />
+        <div className={styles.featureGrid}>
+          {learningTracks.map((track) => (
+            <article className={styles.featureCard} key={track.tag}>
+              <p className={styles.cardLabel}>{track.tag}</p>
+              <h3>{track.title}</h3>
+              <p>{track.description}</p>
+              <ul className={styles.moduleList}>
+                {track.capabilities.map((cap) => (
+                  <li key={cap}>{cap}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Trayectoria académica"
+          title="De los fundamentos al despliegue profesional en cuatro fases."
+          description="La carrera avanza de lógica y algoritmos hasta especialización, residencia profesional y entrega de proyecto. Cada fase tiene propósito claro."
+        />
+        <div className={styles.stageGrid}>
+          {roadmapPhases.map((phase) => (
+            <article className={styles.stageCard} key={phase.phase}>
+              <p className={styles.cardLabel}>{phase.phase}</p>
+              <h3>{phase.title}</h3>
+              <p>{phase.description}</p>
+              <div className={styles.tagList}>
+                {phase.focus.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Perfil de egreso"
+          title="Lo que sabe hacer un ingeniero que egresa de ISC TESCHA."
+          description="Nueve capacidades concretas del plan oficial TecNM: desde desarrollo de software hasta gestión de redes y criterio estratégico para soluciones tecnológicas."
+        />
+        <div className={styles.featureGrid}>
+          {graduateProfile.map((item) => (
+            <article className={styles.featureCard} key={item}>
+              <p>{item}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <SectionHeading
+          eyebrow="Campo laboral"
+          title="Dónde trabaja un egresado de ISC TESCHA."
+          description="La carrera abre puertas en sectores de software, datos, redes, consultoría y emprendimiento tecnológico a nivel regional y nacional."
+        />
+        <article className={styles.featureCard}>
+          <p>{laborField.description}</p>
+          <ul className={styles.moduleList}>
+            {laborField.areas.map((area) => (
+              <li key={area}>{area}</li>
+            ))}
+          </ul>
+        </article>
       </section>
 
       <section className={styles.section}>
