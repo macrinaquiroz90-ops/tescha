@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
@@ -44,3 +44,12 @@ jobs:
         run: |
           echo "The static export (out/) has been generated and uploaded as artifact 'out-export'."
           echo "To publish to Cloudflare Pages automatically you can add a job step using 'wrangler pages publish' and set CF_ACCOUNT_ID and CF_API_TOKEN as secrets."
+
+      - name: Publish to Cloudflare Pages
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN && secrets.CF_ACCOUNT_ID }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          echo "Publishing to Cloudflare Pages using wrangler..."
+          npx wrangler pages deploy out --project-name tescha --branch main --commit-dirty
