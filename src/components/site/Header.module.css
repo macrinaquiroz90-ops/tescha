@@ -20,9 +20,9 @@
 
 .scrolled {
   border-color: var(--panel-border);
-  background: rgba(7, 17, 31, 0.82);
+  background: var(--header-scrolled-bg);
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(14px);
+  backdrop-filter: var(--surface-blur);
 }
 
 .brandLockup {
@@ -80,6 +80,13 @@
   color: var(--foreground);
 }
 
+.navItem:focus-visible,
+.menuToggle:focus-visible,
+.brandLockup:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .navItem[data-active="true"] {
   color: var(--foreground);
 }
@@ -125,7 +132,7 @@
   width: 1.15rem;
   height: 2px;
   margin: 0.28rem auto;
-  background: #f6fbff;
+  background: var(--foreground);
 }
 
 @media (max-width: 900px) {
@@ -150,11 +157,63 @@
     padding: 1rem;
     border: 1px solid var(--panel-border);
     border-radius: 24px;
-    background: rgba(7, 17, 31, 0.96);
+    background: var(--mobile-nav-bg, rgba(7, 17, 31, 0.97));
     box-shadow: var(--shadow);
+    backdrop-filter: var(--surface-blur-strong);
   }
 
   .navOpen {
     display: flex;
   }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0.7rem 0.8rem;
+  }
+
+  .brandMeta {
+    display: none;
+  }
+
+  .navItem {
+    min-height: 3rem;
+    padding: 0.7rem 0.95rem;
+  }
+}
+
+/* ─── LIGHT MODE ───────────────────────────────────────── */
+:global([data-theme="light"]) {
+  --mobile-nav-bg: rgba(220, 232, 242, 0.97);
+}
+
+:global([data-theme="light"]) .navItem {
+  color: #334155;
+}
+
+:global([data-theme="light"]) .navItem:hover {
+  color: #0f172a;
+}
+
+:global([data-theme="light"]) .navItem[data-active="true"] {
+  color: #0f172a;
+}
+
+:global([data-theme="light"]) .menuToggle {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+:global([data-theme="light"]) .menuToggle span {
+  background: #0f172a;
+}
+
+:global([data-theme="light"]) .navIndicator {
+  background: rgba(0, 100, 80, 0.1);
+  border-color: rgba(0, 100, 80, 0.3);
+  box-shadow: 0 0 14px rgba(0, 100, 80, 0.08) inset;
+}
+
+:global([data-theme="light"]) .admissionsLink {
+  background: rgba(0, 100, 80, 0.12);
+  color: #003d30 !important;
 }

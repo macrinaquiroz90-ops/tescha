@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import styles from "./TerminalWindow.module.css";
 
 type Kind = "cmd" | "out" | "ok";
@@ -20,45 +19,85 @@ const SCRIPT: ScriptLine[] = [
   { text: "  Container api-main  Started  [OK]", kind: "ok" },
 ];
 
-const DELAY: Record<Kind, number> = { cmd: 46, out: 18, ok: 22 };
-
 export function TerminalWindow() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
-  const [done, setDone] = useState<ScriptLine[]>([]);
-  const [typing, setTyping] = useState("");
-  const [lineIdx, setLineIdx] = useState(0);
-  const [charIdx, setCharIdx] = useState(0);
-  const [active, setActive] = useState(false);
+  const [lines, setLines] = useState<string[]>(() => SCRIPT.map(() => ""));
+  const currentRef = useRef({ line: 0, char: 0 });
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    if (inView) setActive(true);
-  }, [inView]);
+    const el = ref.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setStarted(true);
+        io.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (!active || lineIdx >= SCRIPT.length) return;
+    if (!started) return;
+    let cancelled = false;
 
-    const line = SCRIPT[lineIdx];
-    const target = line.text;
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-    if (charIdx < target.length) {
-      const pause = charIdx === 0 && lineIdx > 0 ? 380 : DELAY[line.kind];
-      const id = setTimeout(() => {
-        setTyping(target.slice(0, charIdx + 1));
-        setCharIdx((c) => c + 1);
-      }, pause);
-      return () => clearTimeout(id);
-    }
+    const run = async () => {
+      while (!cancelled) {
+        const { line, char } = currentRef.current;
 
-    const id = setTimeout(() => {
-      setDone((prev) => [...prev, line]);
-      setTyping("");
-      setCharIdx(0);
-      setLineIdx((l) => l + 1);
-    }, 110);
-    return () => clearTimeout(id);
-  }, [active, lineIdx, charIdx]);
+        // If we've finished all lines, pause, clear and restart
+        if (line >= SCRIPT.length) {
+          await sleep(1200 + Math.random() * 800);
+          if (cancelled) break;
+          setLines(() => SCRIPT.map(() => ""));
+          currentRef.current = { line: 0, char: 0 };
+          continue;
+        }
+
+        const entry = SCRIPT[line];
+
+        if (entry.kind === "cmd") {
+          const target = entry.text;
+          if (char < target.length) {
+            const baseDelay = 20 + Math.random() * 40;
+            await sleep(baseDelay);
+            if (cancelled) break;
+            setLines((prev) => {
+              const copy = prev.slice();
+              copy[line] = target.slice(0, char + 1);
+              return copy;
+            });
+            currentRef.current.char = char + 1;
+          } else {
+            await sleep(420);
+            if (cancelled) break;
+            currentRef.current = { line: line + 1, char: 0 };
+          }
+        } else {
+          // output lines appear instantly after short pause
+          await sleep(300 + Math.random() * 180);
+          if (cancelled) break;
+          setLines((prev) => {
+            const copy = prev.slice();
+            copy[line] = entry.text;
+            return copy;
+          });
+          currentRef.current = { line: line + 1, char: 0 };
+        }
+      }
+    };
+
+    run();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [started]);
 
   return (
     <div className={styles.window} ref={ref}>
@@ -69,23 +108,15 @@ export function TerminalWindow() {
         <span className={styles.barTitle}>isc@tescha  ~/proyectos</span>
       </div>
       <pre className={styles.body} aria-label="Terminal animado de ejemplo">
-        {done.map((l, i) => (
+        {SCRIPT.map((l, i) => (
           <div key={i} className={`${styles.line} ${styles[l.kind]}`}>
-            {l.text}
+            {lines[i] || (l.kind === "cmd" ? "" : "")}
           </div>
         ))}
-        {lineIdx < SCRIPT.length && (
-          <div className={`${styles.line} ${styles[SCRIPT[lineIdx].kind]}`}>
-            {typing}
-            <span className={styles.cursor} aria-hidden="true" />
-          </div>
-        )}
-        {lineIdx >= SCRIPT.length && (
-          <div className={`${styles.line} ${styles.cmd}`}>
-            ${" "}
-            <span className={styles.cursor} aria-hidden="true" />
-          </div>
-        )}
+        <div className={`${styles.line} ${styles.cmd}`}>
+          ${" "}
+          <span className={styles.cursor} aria-hidden="true" />
+        </div>
       </pre>
     </div>
   );

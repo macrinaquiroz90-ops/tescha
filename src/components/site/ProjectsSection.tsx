@@ -16,6 +16,7 @@ const projectCards: Array<{
   badgeClass: string;
   title: string;
   desc: string;
+  snippet: string;
   Canvas: React.ComponentType<{ className?: string }>;
   modal: ProjectModalData;
 }> = [
@@ -24,6 +25,13 @@ const projectCards: Array<{
     badgeClass: demoStyles.demoBadge_blue,
     title: "Sistema de inventario con React y Node.js",
     desc: "Aplicación web fullstack para gestión de productos, usuarios y reportes. Frontend en React, API REST en Node.js y base de datos MySQL.",
+    snippet: `// Node.js — GET /productos
+router.get('/productos', auth, async (req, res) => {
+  const rows = await db.query(
+    'SELECT * FROM productos WHERE activo = 1'
+  );
+  res.json({ ok: true, data: rows });
+});`,
     Canvas: NeuralNetCanvas,
     modal: {
       title: "Sistema de inventario con React y Node.js",
@@ -42,6 +50,14 @@ const projectCards: Array<{
     badgeClass: demoStyles.demoBadge_green,
     title: "API REST con autenticación JWT en Node.js",
     desc: "Servicio backend con rutas protegidas, gestión de usuarios y tokens de acceso. Desplegado con Docker y documentado con Swagger.",
+    snippet: `// Middleware de verificación JWT
+const auth = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'No autorizado' });
+  const payload = jwt.verify(token, process.env.JWT_SECRET);
+  req.user = payload;
+  next();
+};`,
     Canvas: MatrixRainCanvas,
     modal: {
       title: "API REST con autenticación JWT en Node.js",
@@ -60,6 +76,14 @@ const projectCards: Array<{
     badgeClass: demoStyles.demoBadge_orange,
     title: "Clasificador de spam con Python y scikit-learn",
     desc: "Modelo de machine learning entrenado con Naive Bayes para clasificación de correos. Exportado con joblib e integrado en una API Flask.",
+    snippet: `# Entrenar y exportar el modelo
+from sklearn.naive_bayes import MultinomialNB
+import joblib
+
+model = MultinomialNB()
+model.fit(X_train, y_train)
+print(f"Precisión: {model.score(X_test, y_test):.2%}")
+joblib.dump(model, 'spam_detector.pkl')`,
     Canvas: SortBarsCanvas,
     modal: {
       title: "Clasificador de spam con Python y scikit-learn",
@@ -78,6 +102,13 @@ const projectCards: Array<{
     badgeClass: demoStyles.demoBadge_pink,
     title: "Simulador de topologías LAN/WAN con Cisco",
     desc: "Diseño e implementación de redes con VLANs, enrutamiento OSPF y configuración de dispositivos Cisco en Packet Tracer.",
+    snippet: `! Configuración de OSPF en Router Cisco
+router ospf 1
+ network 192.168.1.0 0.0.0.255 area 0
+ network 10.0.0.0 0.0.0.3 area 0
+ passive-interface GigabitEthernet0/1
+!
+ip route 0.0.0.0 0.0.0.0 10.0.0.1`,
     Canvas: NetTopoCanvas,
     modal: {
       title: "Simulador de topologías LAN/WAN con Cisco",
@@ -106,20 +137,29 @@ export function ProjectsSection() {
               <article
                 className={demoStyles.demoCard}
                 onClick={() => setActiveProject(card.modal)}
-                onKeyDown={(e) => e.key === "Enter" && setActiveProject(card.modal)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveProject(card.modal);
+                  }
+                }}
                 role="button"
                 tabIndex={0}
+                aria-haspopup="dialog"
+                aria-label={`Abrir detalle del proyecto ${card.title}`}
               >
                 <span className={`${demoStyles.demoBadge} ${card.badgeClass}`}>{card.badge}</span>
                 <p className={demoStyles.demoTitle}>{card.title}</p>
                 <div className={demoStyles.demoCanvas}>
                   <Canvas />
                 </div>
+                <pre className={demoStyles.snippet}><code>{card.snippet}</code></pre>
                 <p className={demoStyles.demoDesc}>{card.desc}</p>
                 <span className={demoStyles.demoClickHint}>
                   <span className={demoStyles.demoClickDot} aria-hidden="true" />
                   Haz clic para ver cómo se construyó
                 </span>
+                <span className={demoStyles.demoMeta}>Semestres y tecnologías explicados dentro</span>
               </article>
             </AnimatedCard>
           );

@@ -1,0 +1,9 @@
+name = "tescha-security-headers-worker"
+main = "index.mjs"
+compatibility_date = "2026-04-27"
+type = "javascript"
+# Set `workers_dev = true` to get a workers.dev subdomain for testing.
+workers_dev = true
+
+# Optional: add your account_id to publish to your account directly
+# account_id = ""

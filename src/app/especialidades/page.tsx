@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { ProjectsSection } from "@/components/site/ProjectsSection";
+import { TrustNote } from "@/components/site/TrustNote";
+import { AnimatedGrid, AnimatedCard } from "@/components/site/AnimatedSection";
+import { LazyProjectsSection } from "@/components/site/LazyProjectsSection";
 import {
   educationalObjectives,
   exitAttributes,
@@ -25,7 +27,9 @@ export default function SpecialtiesPage() {
         title="Elige el área donde quieres construir tu perfil profesional."
         description="Dos especialidades formales más rutas en desarrollo web, móvil y ciencia de datos. Conoce hacia dónde puede orientarse tu carrera desde los últimos semestres del programa."
         accent="Rutas tecnológicas alineadas al mercado laboral actual"
-      />
+      >
+        <TrustNote compact />
+      </PageHero>
 
       <section className={styles.section}>
         <SectionHeading
@@ -34,20 +38,22 @@ export default function SpecialtiesPage() {
           description="Cada especialidad corresponde a un frente tecnológico activo en la industria: desarrollo de aplicaciones, ciencia de datos, industria 4.0 y comercio electrónico."
         />
 
-        <div className={styles.specialtyGrid}>
+        <AnimatedGrid className={styles.specialtyGrid}>
           {specializationShowcase.map((specialty) => (
-            <article className={styles.specialtyCard} key={specialty.title}>
-              <p className={styles.cardLabel}>{specialty.family}</p>
-              <h3>{specialty.title}</h3>
-              <p>{specialty.description}</p>
-              <ul className={styles.moduleList}>
-                {specialty.modules.map((module) => (
-                  <li key={module}>{module}</li>
-                ))}
-              </ul>
-            </article>
+            <AnimatedCard key={specialty.title}>
+              <article className={styles.specialtyCard}>
+                <p className={styles.cardLabel}>{specialty.family}</p>
+                <h3>{specialty.title}</h3>
+                <p>{specialty.description}</p>
+                <ul className={styles.moduleList}>
+                  {specialty.modules.map((module) => (
+                    <li key={module}>{module}</li>
+                  ))}
+                </ul>
+              </article>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGrid>
       </section>
 
       <section className={styles.section}>
@@ -56,7 +62,7 @@ export default function SpecialtiesPage() {
           title="Lo que construyes durante la carrera — semestres 5 al 8."
           description="Los primeros semestres construyes la base: lógica, algoritmos, matemáticas y programación. Los proyectos de software completo llegan en la fase de especialización."
         />
-        <ProjectsSection />
+        <LazyProjectsSection />
       </section>
 
       <section className={styles.section}>
@@ -65,14 +71,16 @@ export default function SpecialtiesPage() {
           title="Las tres grandes áreas en las que te forma ISC TESCHA."
           description="Software, datos e infraestructura: los tres ejes técnicos del programa con experiencias que conectan el aula con la industria real."
         />
-        <div className={styles.featureGrid}>
+        <AnimatedGrid className={styles.featureGrid}>
           {innovationPillars.map((pillar) => (
-            <article className={styles.featureCard} key={pillar.title}>
-              <h3>{pillar.title}</h3>
-              <p>{pillar.description}</p>
-            </article>
+            <AnimatedCard key={pillar.title}>
+              <article className={styles.featureCard}>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.description}</p>
+              </article>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGrid>
       </section>
 
       <section className={styles.section}>
@@ -147,14 +155,16 @@ export default function SpecialtiesPage() {
           title="Lo que persigue ISC TESCHA en la formación de sus egresados."
           description="Cuatro objetivos formales del plan TecNM que orientan el perfil de los ingresados al campo profesional y académico."
         />
-        <div className={styles.stageGrid}>
+        <AnimatedGrid className={styles.stageGrid}>
           {educationalObjectives.map((obj) => (
-            <article className={styles.stageCard} key={obj.num}>
-              <p className={styles.cardLabel}>Objetivo {obj.num}</p>
-              <p>{obj.text}</p>
-            </article>
+            <AnimatedCard key={obj.num}>
+              <article className={styles.stageCard}>
+                <p className={styles.cardLabel}>Objetivo {obj.num}</p>
+                <p>{obj.text}</p>
+              </article>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGrid>
       </section>
 
       <section className={styles.section}>
@@ -163,14 +173,16 @@ export default function SpecialtiesPage() {
           title="Siete competencias que el ingeniero desarrolla a lo largo de la carrera."
           description="Atributos oficiales del TecNM para ISC: competencias técnicas específicas que definen las capacidades del perfil de egreso."
         />
-        <div className={styles.specialtyGrid}>
+        <AnimatedGrid className={styles.specialtyGrid}>
           {exitAttributes.map((attr) => (
-            <article className={styles.specialtyCard} key={attr.num}>
-              <p className={styles.cardLabel}>Atributo {attr.num}</p>
-              <p>{attr.text}</p>
-            </article>
+            <AnimatedCard key={attr.num}>
+              <article className={styles.specialtyCard}>
+                <p className={styles.cardLabel}>Atributo {attr.num}</p>
+                <p>{attr.text}</p>
+              </article>
+            </AnimatedCard>
           ))}
-        </div>
+        </AnimatedGrid>
       </section>
     </main>
   );

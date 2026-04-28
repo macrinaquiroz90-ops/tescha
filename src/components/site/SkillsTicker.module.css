@@ -77,3 +77,17 @@
     animation-duration: 26s;
   }
 }
+
+/* ─── LIGHT MODE ─── */
+:global([data-theme="light"]) .pill {
+  color: #005040;
+  border-color: rgba(0, 100, 80, 0.22);
+  background: rgba(0, 100, 80, 0.06);
+}
+
+:global([data-theme="light"]) .pill:hover {
+  color: #003d30;
+  border-color: rgba(0, 100, 80, 0.48);
+  background: rgba(0, 100, 80, 0.13);
+  box-shadow: 0 0 16px rgba(0, 100, 80, 0.1);
+}

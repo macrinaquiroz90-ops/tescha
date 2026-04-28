@@ -1,0 +1,39 @@
+.note {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 244, 216, 0.18);
+  background: rgba(47, 244, 216, 0.06);
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.compact {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.76rem;
+}
+
+.separator {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+:global([data-theme="light"]) .note {
+  border-color: rgba(0, 106, 142, 0.18);
+  background: rgba(0, 106, 142, 0.05);
+  color: #375781;
+}
+
+@media (max-width: 540px) {
+  .note {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

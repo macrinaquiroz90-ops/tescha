@@ -26,8 +26,7 @@
   margin-top: 0.45rem;
   font-size: 0.8rem;
   line-height: 1.6;
-  color: rgba(160, 185, 220, 0.55);
-  font-style: italic;
+  color: rgba(160, 185, 220, 0.72);
 }
 
 @media (max-width: 780px) {

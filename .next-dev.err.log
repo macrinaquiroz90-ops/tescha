@@ -1,0 +1,131 @@
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+⨯ ./src/components/site/HomeHeroClient.tsx:7:8
+the name `dynamic` is defined multiple times
+  [90m 5 |[0m [36mimport[0m { [33mCountUp[0m } [36mfrom[0m [32m"@/components/site/AnimatedSection"[0m;
+  [90m 6 |[0m [36mimport[0m { [33mSkillsTicker[0m } [36mfrom[0m [32m"@/components/site/SkillsTicker"[0m;
+[31m[1m>[0m [90m 7 |[0m [36mimport[0m dynamic [36mfrom[0m [32m"next/dynamic"[0m;
+  [90m   |[0m        [31m[1m^^^^^^^[0m
+  [90m 8 |[0m [36mconst[0m [33mTerminalWindow[0m = dynamic(
+  [90m 9 |[0m   () => [36mimport[0m([32m"@/components/site/TerminalWindow"[0m).then((m) => m.[33mTerminalWindow[0m),
+  [90m10 |[0m   { ssr: [36mfalse[0m, loading: () => <div style={{ minHeight: [32m"160px"[0m }} aria-hidden /> }
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/site/HomeHeroClient.tsx
+    ./src/app/page.tsx
+
+
+⨯ ./src/components/site/HomeHeroClient.tsx:7:8
+the name `dynamic` is defined multiple times
+  [90m 5 |[0m [36mimport[0m { [33mCountUp[0m } [36mfrom[0m [32m"@/components/site/AnimatedSection"[0m;
+  [90m 6 |[0m [36mimport[0m { [33mSkillsTicker[0m } [36mfrom[0m [32m"@/components/site/SkillsTicker"[0m;
+[31m[1m>[0m [90m 7 |[0m [36mimport[0m dynamic [36mfrom[0m [32m"next/dynamic"[0m;
+  [90m   |[0m        [31m[1m^^^^^^^[0m
+  [90m 8 |[0m [36mconst[0m [33mTerminalWindow[0m = dynamic(
+  [90m 9 |[0m   () => [36mimport[0m([32m"@/components/site/TerminalWindow"[0m).then((m) => m.[33mTerminalWindow[0m),
+  [90m10 |[0m   { ssr: [36mfalse[0m, loading: () => <div style={{ minHeight: [32m"160px"[0m }} aria-hidden /> }
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/site/HomeHeroClient.tsx
+    ./src/app/page.tsx
+
+
+⨯ ./src/components/site/HomeHeroClient.tsx:7:8
+the name `dynamic` is defined multiple times
+  [90m 5 |[0m [36mimport[0m { [33mCountUp[0m } [36mfrom[0m [32m"@/components/site/AnimatedSection"[0m;
+  [90m 6 |[0m [36mimport[0m { [33mSkillsTicker[0m } [36mfrom[0m [32m"@/components/site/SkillsTicker"[0m;
+[31m[1m>[0m [90m 7 |[0m [36mimport[0m dynamic [36mfrom[0m [32m"next/dynamic"[0m;
+  [90m   |[0m        [31m[1m^^^^^^^[0m
+  [90m 8 |[0m [36mconst[0m [33mTerminalWindow[0m = dynamic(
+  [90m 9 |[0m   () => [36mimport[0m([32m"@/components/site/TerminalWindow"[0m).then((m) => m.[33mTerminalWindow[0m),
+  [90m10 |[0m   { ssr: [36mfalse[0m, loading: () => <div style={{ minHeight: [32m"160px"[0m }} aria-hidden /> }
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/site/HomeHeroClient.tsx
+    ./src/app/page.tsx
+
+
+[browser] Uncaught Error: ./src/components/site/HomeHeroClient.tsx:7:8
+the name `dynamic` is defined multiple times
+   5 | import { CountUp } from "@/components/site/AnimatedSection";
+   6 | import { SkillsTicker } from "@/components/site/SkillsTicker";
+>  7 | import dynamic from "next/dynamic";
+     |        ^^^^^^^
+   8 | const TerminalWindow = dynamic(
+   9 |   () => import("@/components/site/TerminalWindow").then((m) => m.TerminalWindow),
+  10 |   { ssr: false, loading: () => <div style={{ minHeight: "160px" }} aria-hidden /> }
+
+Ecmascript file had an error
+
+Import trace:
+  Server Component:
+    ./src/components/site/HomeHeroClient.tsx
+    ./src/app/page.tsx
+
+
+    at <unknown> (Error: ./src/components/site/HomeHeroClient.tsx:7:8)
+    at <unknown> (Error: (./src/components/site/HomeHeroClient.tsx:7:8)
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+Error: Turbopack build failed with 1 errors:
+./src/app
+Error: Next.js inferred your workspace root, but it may not be correct.
+    We couldn't find the Next.js package (next/package.json) from the project directory: C:\Users\dush3\Downloads\tescha\src\app
+     To fix this, set turbopack.root in your Next.js config, or ensure the Next.js package is resolvable from this directory.
+    Note: For security and performance reasons, files outside of the project directory will not be compiled.
+    See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+
+    at ignore-listed frames

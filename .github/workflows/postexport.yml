@@ -1,0 +1,46 @@
+name: Build, Export and Post-export
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Export static site
+        run: npx next export
+
+      - name: Run post-export extractor
+        run: npm run postexport
+
+      - name: List out/ contents
+        run: |
+          echo "Contents of out/"
+          ls -la out || true
+
+      - name: Upload exported site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: out-export
+          path: out/
+
+      - name: Notes
+        run: |
+          echo "The static export (out/) has been generated and uploaded as artifact 'out-export'."
+          echo "To publish to Cloudflare Pages automatically you can add a job step using 'wrangler pages publish' and set CF_ACCOUNT_ID and CF_API_TOKEN as secrets."

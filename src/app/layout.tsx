@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
+import { PageTransition } from "@/components/site/PageTransition";
+import { ScrollProgressBar } from "@/components/site/ScrollProgressBar";
+import { ScrollToTop } from "@/components/site/ScrollToTop";
 import { primaryNavigation } from "@/content/site";
 import { siteRuntimeConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -41,12 +44,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        {/*
+          Script de inicialización de tema — externo para cumplir CSP sin 'unsafe-inline'.
+          El atributo `async` NO se usa aquí intencionalmente: debe bloquear el render
+          para evitar el flash de tema incorrecto (FOIT para dark/light mode).
+        */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="/theme-init.js" />
+      </head>
       <body suppressHydrationWarning>
+        <ScrollProgressBar />
         <Header
           items={[...primaryNavigation]}
         />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

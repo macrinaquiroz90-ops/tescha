@@ -19,9 +19,7 @@ export const siteCopy = {
     lead: "Tecnológico de Estudios Superiores de Chalco · TecNM",
     title: "Construye software que resuelve problemas reales.",
     description:
-      "Aprende a diseñar, programar y desplegar sistemas desde el primer semestre. Plan oficial TecNM · 9 semestres · 3 especialidades.",
-    caption:
-      "Carrera pública, con respaldo nacional, en el oriente del Estado de México. Orientada al perfil profesional que más demanda el sector TI en la región y el país.",
+      "Carrera pública con respaldo TecNM. Aprende a diseñar, programar y desplegar sistemas desde el primer semestre — 9 semestres · 3 especialidades.",
     highlights: [
       "Plan oficial TecNM",
       "3 especialidades activas",
@@ -36,7 +34,7 @@ export const siteCopy = {
   cta: {
     title: "¿Listo para ingresar a Ingeniería en Sistemas en el TESCHA?",
     description:
-      "Consulta el proceso de admisión oficial, las fechas de convocatoria vigentes y los requisitos de ingreso en el portal institucional del TESCHA.",
+      "Ingresa al portal institucional para consultar los requisitos, proceso de admisión y programa oficial de ISC TESCHA.",
   },
 } as const;
 
@@ -114,10 +112,10 @@ export const officialResources = [
     href: "/pdfs/reticula-industria-4.0.pdf",
   },
   {
-    title: "Retícula Web y Móvil (PDF)",
+    title: "Plan de estudio Web y Móviles (PDF)",
     description:
       "Estructura académica de la especialidad en Desarrollo de Aplicaciones para Web y Dispositivos Móviles.",
-    href: "/pdfs/reticula-web-movil.pdf",
+    href: "/pdfs/plan-estudio-web-moviles.pdf",
   },
   {
     title: "Retícula Ciencia de Datos (PDF)",
@@ -301,6 +299,48 @@ export const heroMetrics = [
       "Plan avalado por el Tecnológico Nacional de México con validez académica en todo el país.",
   },
 ] as const;
+
+export const salaryRanges = [
+  {
+    role: "Desarrollador Junior",
+    range: "$14,000 – $22,000",
+    note: "Al salir de la carrera, con dominio de al menos un stack.",
+    color: "blue",
+  },
+  {
+    role: "Desarrollador Mid-Level",
+    range: "$22,000 – $40,000",
+    note: "2–4 años de experiencia real, proyectos propios en portafolio.",
+    color: "teal",
+  },
+  {
+    role: "Data Analyst / ML Engineer",
+    range: "$25,000 – $45,000",
+    note: "Especialidad en Ciencia de Datos + Python + SQL dominados.",
+    color: "orange",
+  },
+  {
+    role: "DevOps / Cloud Engineer",
+    range: "$30,000 – $55,000",
+    note: "Infraestructura, Docker, CI/CD. Alta demanda y poca oferta.",
+    color: "pink",
+  },
+] as const;
+
+export const semesterTimeline = [
+  { sem: "Sem 1–2", milestone: "Tu primer programa", detail: "Código que corre, lógica que funciona. El momento en que todo hace clic." },
+  { sem: "Sem 3–4", milestone: "Tu primera app web", detail: "Frontend + backend + base de datos. Ya puedes mostrar algo en el navegador." },
+  { sem: "Sem 5–6", milestone: "Tu primera API en producción", detail: "Código tuyo funcionando en internet. Empieza el portafolio real." },
+  { sem: "Sem 7–8", milestone: "Tu primer modelo de IA", detail: "Datos reales, predicciones reales. Bienvenido a la especialización." },
+  { sem: "Sem 9", milestone: "Residencia profesional", detail: "En una empresa real, resolviendo problemas reales. Tu carta de presentación." },
+] as const;
+
+export const marketDemand = {
+  stat: "300,000",
+  label: "ingenieros en TI faltan en México para 2030",
+  source: "CANIETI · Consejo Nacional de Ciencia y Tecnología",
+  context: "La oferta de talento tech crece, pero la demanda crece más rápido. Quien termina hoy tiene trabajo antes de graduarse.",
+} as const;
 
 export const differentiators = [
   {
@@ -605,6 +645,36 @@ export const convocatoriaNotice = {
   href: "https://tescha.edomex.gob.mx/ing-sistemas-computacionales",
 } as const;
 
+export const tuitionFees = {
+  inscription: {
+    label: "Inscripción o reinscripción (anual)",
+    description: "Se paga una vez por ciclo escolar vigente.",
+    amount: 323,
+  },
+  semestral: {
+    label: "Cuota semestral (base)",
+    description: "Aplica para todos los estudiantes inscritos en el semestre.",
+    amount: 2879,
+  },
+  discounts: [
+    {
+      range: "80 – 85",
+      amount: 1871,
+      saving: 1008,
+    },
+    {
+      range: "86 – 90",
+      amount: 1583,
+      saving: 1296,
+    },
+    {
+      range: "91 – 95",
+      amount: 1152,
+      saving: 1727,
+    },
+  ],
+} as const;
+
 export const testimonials = [
   {
     quote:
@@ -636,7 +706,9 @@ export const faqItems = [
   },
   {
     q: "¿Cuánto cuesta estudiar en el TESCHA?",
-    a: "El TESCHA es una institución pública del Estado de México. Sus cuotas son accesibles comparadas con universidades privadas. Consulta los montos vigentes en el portal institucional o contacta directamente a administración escolar.",
+    a: "Inscripción o reinscripción anual: $323. Cuota semestral base: $2,879. Si mantienes promedio general por encima de 80, la cuota semestral se reduce: promedio 80–85 pagas $1,871; promedio 86–90 pagas $1,583; promedio 91–95 pagas $1,152.",
+    href: "https://tescha.edomex.gob.mx/tramites_servicios",
+    hrefLabel: "Ver cuotas oficiales en el portal TESCHA",
   },
   {
     q: "¿Qué especialidades ofrece la carrera?",

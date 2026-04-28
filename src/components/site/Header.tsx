@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 import styles from "./Header.module.css";
 
 type HeaderProps = {
@@ -17,14 +18,28 @@ export function Header({ items }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const frameRef = useRef<number | null>(null);
 
   const syncScroll = useEffectEvent(() => {
-    setIsScrolled(window.scrollY > 18);
+    const nextIsScrolled = window.scrollY > 18;
+    setIsScrolled((current) => (current === nextIsScrolled ? current : nextIsScrolled));
+  });
+
+  const closeMenuOnScroll = useEffectEvent(() => {
+    setIsMenuOpen((current) => (current ? false : current));
   });
 
   useEffect(() => {
     const handleScroll = () => {
-      syncScroll();
+      if (frameRef.current !== null) {
+        return;
+      }
+
+      frameRef.current = window.requestAnimationFrame(() => {
+        frameRef.current = null;
+        syncScroll();
+        closeMenuOnScroll();
+      });
     };
 
     handleScroll();
@@ -32,6 +47,9 @@ export function Header({ items }: HeaderProps) {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
     };
   }, []);
 
@@ -39,12 +57,15 @@ export function Header({ items }: HeaderProps) {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <Link className={styles.brandLockup} href="/" onClick={() => setIsMenuOpen(false)}>
         <div className={styles.brandMark}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logos/Logo_Ingenieria_Sistemas.png"
-            alt="Logo ISC TESCHA"
-            className={styles.brandLogo}
-          />
+          <picture>
+            <source srcSet="/logos/Logo_Ingenieria_Sistemas.webp" type="image/webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logos/Logo_Ingenieria_Sistemas_opt.png"
+              alt="Logo ISC TESCHA"
+              className={styles.brandLogo}
+            />
+          </picture>
         </div>
         <div>
           <p className={styles.brandName}>Ingeniería en Sistemas</p>
@@ -56,7 +77,7 @@ export function Header({ items }: HeaderProps) {
         type="button"
         className={styles.menuToggle}
         aria-expanded={isMenuOpen}
-        aria-label="Abrir menú"
+        aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
         onClick={() => setIsMenuOpen((current) => !current)}
       >
         <span />
@@ -87,6 +108,7 @@ export function Header({ items }: HeaderProps) {
             </Link>
           );
         })}
+        <ThemeToggle />
       </nav>
     </header>
   );

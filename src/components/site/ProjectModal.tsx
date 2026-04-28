@@ -18,11 +18,13 @@ type Props = {
 
 export function ProjectModal({ data, onClose }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     el.showModal();
+    closeButtonRef.current?.focus();
     const handleCancel = () => onClose();
     el.addEventListener("cancel", handleCancel);
     return () => {
@@ -36,16 +38,22 @@ export function ProjectModal({ data, onClose }: Props) {
   };
 
   return (
-    <dialog ref={ref} className={styles.dialog} onClick={handleBackdrop}>
+    <dialog
+      ref={ref}
+      className={styles.dialog}
+      onClick={handleBackdrop}
+      aria-labelledby="project-modal-title"
+    >
       <div className={styles.panel}>
 
         <div className={styles.header}>
-          <h2 className={styles.title}>{data.title}</h2>
+          <h2 className={styles.title} id="project-modal-title">{data.title}</h2>
           <button
             type="button"
             className={styles.closeBtn}
             onClick={onClose}
             aria-label="Cerrar modal"
+            ref={closeButtonRef}
           >
             ✕
           </button>
@@ -78,6 +86,7 @@ export function ProjectModal({ data, onClose }: Props) {
         <section>
           <p className={styles.blockLabel}>¿Dónde lo aprendes en ISC TESCHA?</p>
           <p className={styles.semesterText}>{data.semesterInfo}</p>
+          <p className={styles.metaNote}>Referencia orientativa basada en la progresión del plan y materias visibles del programa.</p>
         </section>
 
         <div className={styles.actions}>

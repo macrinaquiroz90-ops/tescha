@@ -13,9 +13,9 @@ type Props = {
 
 const variants = {
   hidden: (direction: string) => ({
-    opacity: 0,
-    y: direction === "up" ? 40 : 0,
-    x: direction === "left" ? -40 : direction === "right" ? 40 : 0,
+    opacity: 0.01,
+    y: direction === "up" ? 18 : 0,
+    x: direction === "left" ? -18 : direction === "right" ? 18 : 0,
   }),
   visible: { opacity: 1, y: 0, x: 0 },
 };
@@ -37,9 +37,9 @@ export function AnimatedSection({
       className={className}
       custom={direction}
       variants={variants}
-      initial="hidden"
+      initial={false}
       animate={isInView ? "visible" : "hidden"}
-      transition={{ duration: 0.35, delay, ease: "circOut" }}
+      transition={{ duration: 0.18, delay, ease: "circOut" }}
     >
       {children}
     </motion.div>
@@ -62,7 +62,7 @@ export function AnimatedGrid({
     <motion.div
       ref={ref}
       className={className}
-      initial="hidden"
+      initial={false}
       animate={isInView ? "visible" : "hidden"}
       variants={{
         hidden: {},
@@ -111,9 +111,9 @@ export function CountUp({
     <motion.span
       ref={ref}
       className={className}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.4, ease: "circOut" }}
+      initial={false}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
+      transition={{ duration: 0.16, ease: "circOut" }}
     >
       {value}
     </motion.span>

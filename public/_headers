@@ -1,0 +1,33 @@
+/*
+  # ─── Content Security Policy ───────────────────────────────────────────────
+  # Ajusta connect-src y frame-src si añades más servicios externos.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://maps.google.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'; upgrade-insecure-requests
+
+  # ─── Anti-Clickjacking ──────────────────────────────────────────────────────
+  X-Frame-Options: DENY
+
+  # ─── MIME Sniffing ──────────────────────────────────────────────────────────
+  X-Content-Type-Options: nosniff
+
+  # ─── HSTS: 2 años, subdominios incluidos, preload ───────────────────────────
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # ─── Referrer Policy ────────────────────────────────────────────────────────
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # ─── Permissions Policy ─────────────────────────────────────────────────────
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+  # ─── XSS Protection (navegadores legacy) ────────────────────────────────────
+  X-XSS-Protection: 1; mode=block
+
+# ─── Cache agresivo para assets estáticos de Next.js ────────────────────────
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ─── Cache para imágenes públicas ───────────────────────────────────────────
+/logos/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+/images/*
+  Cache-Control: public, max-age=2592000, must-revalidate

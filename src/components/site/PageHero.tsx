@@ -1,4 +1,6 @@
+import { HeroCanvas } from "./HeroCanvas";
 import styles from "./PageHero.module.css";
+import heroStyles from "./HeroCanvas.module.css";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -18,6 +20,8 @@ export function PageHero({
   return (
     <section className={styles.hero}>
       <div className={styles.copy}>
+        <canvas className={heroStyles.canvas} aria-hidden="true" />
+        <HeroCanvas />
         <p className={styles.eyebrow}>{eyebrow}</p>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.description}>{description}</p>

@@ -10,7 +10,8 @@ export function Footer() {
           Superiores de Chalco · Tecnológico Nacional de México.
         </p>
         <p className={styles.credit}>
-          Sitio desarrollado por estudiantes de ISC TESCHA como proyecto de vinculación.
+          Contenido orientado con referencias oficiales del TESCHA y TecNM.
+          Revisión editorial: abril de 2026.
         </p>
       </div>
       <p className={styles.legal}>
